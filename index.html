@@ -20,10 +20,9 @@
       NOT the tags themselves (<p> and </p>)
   - Save the file when you're done
 
-  YOUR CALENDLY LINK:
-  - Search this file for: YOUR-LINK-HERE
-  - Replace all 3 instances with your actual Calendly URL
-  - Example: https://calendly.com/sara-kingston/discovery
+  YOUR BOOKING LINK:
+  - Search this file for: calendar.app.google
+  - There are 3 instances — all already set to your Google Calendar link
 
   ============================================================
 -->
@@ -370,6 +369,7 @@
 
       TO REMOVE VIDEO and go back to text-only:
         Delete the <a class="testimonial-video"> block from each card.
+        Then add  padding: 2.5rem;  to .testimonial-card in the CSS above.
     ============================================================ */
     .testimonial-video {
       display: block;
@@ -494,10 +494,8 @@
       - Nav links are hidden (just logo and book button show)
     ============================================================ */
     @media (max-width: 768px) {
-      /* On small screens, collapse two-column layouts to single column */
       .what-inner,
       .testimonial-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      /* Hide nav links on mobile (just logo and book button show) */
       .nav-links { display: none; }
     }
   </style>
@@ -507,34 +505,14 @@
   <!-- ============================================================
     NAV BAR
     ============================================================
-    The "InnTune Consulting" logo text links back to this page.
-    The nav links take visitors to the About page or the
-    "What I do" section further down this page.
-
-    TO CHANGE YOUR CALENDLY LINK:
-    Replace YOUR-LINK-HERE with your actual Calendly URL.
-    There are 3 instances in this file — replace all of them.
-    Example: https://calendly.com/sara-kingston/discovery-call
+    TO ADD YOUR LOGO IMAGE instead of text:
+      1. Save your logo file (e.g., logo.png) in the same folder
+      2. Replace the <a href="index.html" class="nav-logo"> block with:
+            <a href="index.html">
+              <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
+            </a>
   ============================================================ -->
   <nav id="nav">
-    <!--
-      NAV LOGO
-      Right now this shows your business name as styled text.
-
-      TO ADD YOUR LOGO IMAGE:
-        1. Save your logo file (e.g., logo.png) in the same folder as this file.
-           A PNG with a transparent background works best.
-        2. Delete the <a href="index.html" class="nav-logo"> line below
-           and replace the whole block with:
-
-              <a href="index.html">
-                <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
-              </a>
-
-        3. The logo will appear at a reasonable size automatically.
-           If it's too big or small, adjust the height in the CSS
-           by finding .nav-logo-img and changing the height value.
-    -->
     <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
@@ -547,15 +525,11 @@
   <!-- ============================================================
     HERO SECTION
     ============================================================
-    This is the first thing visitors see — the full-screen
-    opening section.
-
     WHAT YOU CAN EDIT HERE:
     - The small eyebrow text ("Operations consulting for small businesses")
     - The main headline (h1) — the <em> tags make "you alone." italic and blue
     - The paragraph below the headline (hero-body)
-    - The button text ("Book a free discovery call")
-    - The link text ("About Sara →")
+    - The button text
   ============================================================ -->
   <section class="hero">
     <div class="hero-content">
@@ -571,7 +545,6 @@
         I work with small business owners who are ready to stop being the bottleneck in their own business. Together we map your operations, close the gaps, and build systems that run without you holding everything together.
       </p>
 
-      <!-- The two buttons. Replace YOUR-LINK-HERE with your Calendly URL. -->
       <div class="hero-actions">
         <a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="btn-primary">Book a free discovery call</a>
         <a href="about.html" class="btn-ghost">About Sara &rarr;</a>
@@ -584,13 +557,10 @@
   <!-- ============================================================
     WHAT I DO SECTION
     ============================================================
-    Two columns: description on the left, four service items
-    on the right. The id="what-i-do" is what the nav link
-    "#what-i-do" jumps to when clicked.
+    The id="what-i-do" is what the nav link "#what-i-do" jumps to.
 
     WHAT YOU CAN EDIT HERE:
-    - The section heading ("From chaos to clarity.")
-    - The two paragraphs on the left
+    - The section heading and paragraphs on the left
     - Each service item: number, title (h3), and description (p)
 
     TO ADD A 5TH ITEM: copy one whole <div class="what-item">
@@ -615,15 +585,15 @@
 
         <!-- SERVICE ITEM 1 -->
         <div class="what-item">
-          <span class="what-number">01</span>              <!-- Number — change if reordering -->
-          <h3>Operations mapping</h3>                      <!-- Service title -->
+          <span class="what-number">01</span>
+          <h3>Operations mapping</h3>
           <p>We look at how your business actually runs today (not how you think it does) and identify every place where things break down or depend on you personally.</p>
         </div>
 
         <!-- SERVICE ITEM 2 -->
         <div class="what-item">
           <span class="what-number">02</span>
-          <h3>Role clarity &amp; team structure</h3>       <!-- &amp; = & character in HTML -->
+          <h3>Role clarity &amp; team structure</h3>  <!-- &amp; = the & character in HTML -->
           <p>Who owns what? When tasks live with roles rather than people, delegation stops being scary and starts working.</p>
         </div>
 
@@ -649,30 +619,25 @@
   <!-- ============================================================
     TESTIMONIALS SECTION
     ============================================================
-    Dark background with two cards. Each card has a clickable
-    video thumbnail on top and the text quote below.
-
     WHAT YOU NEED TO DO:
-    1. Find your YouTube video IDs (the part after "v=" in the URL)
-       Example URL: https://www.youtube.com/watch?v=abc123xyz
-       Video ID:  abc123xyz
+    1. Get your YouTube video IDs (the part after "v=" in the URL)
+       Example: https://www.youtube.com/watch?v=abc123xyz
+       Video ID: abc123xyz
 
-    2. In each card below, replace YOUR-VIDEO-ID in TWO places:
-       - The href on the <a> tag (the YouTube link)
-       - The src on the <img> tag (the thumbnail image URL)
-
-    3. Update the alt text on each <img> to describe the video.
+    2. In each card, replace YOUR-VIDEO-ID in TWO places:
+       - The href on the <a> tag (the full YouTube link)
+       - The src on the <img> tag (the thumbnail URL)
 
     WHAT YOU CAN ALSO EDIT:
     - Each quote (inside the <p class="testimonial-quote"> tags)
     - Each client name and company
     - Star ratings (add or remove ★ characters)
 
-    TO REMOVE VIDEOS and go back to text-only cards:
-    Delete the <a class="testimonial-video"> block from each card.
-    Then add padding: 2.5rem; back to .testimonial-card in the CSS.
+    TO REMOVE VIDEOS and go back to text-only:
+    Delete each <a class="testimonial-video"> block.
+    Then add  padding: 2.5rem;  to .testimonial-card in the CSS.
   ============================================================ -->
-  <section class="testimonials">
+  <section class="testimonials" id="testimonials">
     <span class="section-label fade-in">What clients say</span>
     <h2 class="fade-in">Real results for<br>real businesses.</h2>
 
@@ -680,11 +645,9 @@
 
       <!-- TESTIMONIAL 1 -->
       <div class="testimonial-card">
-
         <!--
-          VIDEO THUMBNAIL — replace YOUR-VIDEO-ID with your actual YouTube video ID
-          The href is the YouTube watch link.
-          The img src is the auto-generated YouTube thumbnail.
+          Replace YOUR-VIDEO-ID below with your actual YouTube video ID.
+          It appears in TWO places in this block.
         -->
         <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID"
            target="_blank"
@@ -693,21 +656,18 @@
           <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID/maxresdefault.jpg"
                alt="Russell from Tap Stays shares his experience working with Sara" />
         </a>
-
-        <!-- Text quote below the video -->
         <div class="testimonial-card-body">
           <p class="testimonial-quote">"The systems Sara has set up to make my business run smoother have been invaluable."</p>
           <div class="testimonial-stars">★★★★★</div>
           <span class="testimonial-name">Russell, Tap Stays</span>
         </div>
-
       </div>
 
       <!-- TESTIMONIAL 2 -->
       <div class="testimonial-card">
-
         <!--
-          VIDEO THUMBNAIL — replace YOUR-VIDEO-ID with your actual YouTube video ID
+          Replace YOUR-VIDEO-ID-2 below with your second video's YouTube ID.
+          It appears in TWO places in this block.
         -->
         <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID-2"
            target="_blank"
@@ -716,13 +676,11 @@
           <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID-2/maxresdefault.jpg"
                alt="Dwight from Northpoint Hospitality shares his experience working with Sara" />
         </a>
-
         <div class="testimonial-card-body">
           <p class="testimonial-quote">"Sara came in and provided clarity for me."</p>
           <div class="testimonial-stars">★★★★★</div>
           <span class="testimonial-name">Dwight, Northpoint Hospitality</span>
         </div>
-
       </div>
 
     </div>
@@ -732,14 +690,10 @@
   <!-- ============================================================
     BOOK A CALL SECTION
     ============================================================
-    The closing call-to-action at the bottom of the page.
-    Light blue background, centered text, one big button.
-
     WHAT YOU CAN EDIT HERE:
     - The section heading ("Let's figure out what's in the way.")
     - The paragraph below it
     - The button text
-    Replace YOUR-LINK-HERE with your Calendly URL.
   ============================================================ -->
   <section class="book">
     <span class="section-label fade-in">Ready to get started?</span>
@@ -752,36 +706,39 @@
   <!-- ============================================================
     FOOTER
     ============================================================
-    The thin strip at the very bottom.
-
     WHAT YOU CAN EDIT HERE:
     - "InnTune Consulting" — your business name
-    - "sara@inntune.net" — your email (appears in two places:
-        the href="mailto:..." and the visible text)
+    - "sara@inntune.net" — update in both the href and the link text
     - The copyright year
   ============================================================ -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="/cdn-cgi/l/email-protection#cfbcaebdae8fa6a1a1bbbaa1aae1a1aabb"><span class="__cf_email__" data-cfemail="c9baa8bba889a0a7a7bdbca7ace7a7acbd">[email&#160;protected]</span></a>
-    <span>&copy; 2026 InnTune Consulting</span>   <!-- &copy; = the © symbol -->
+    <a href="mailto:sara@inntune.net">sara@inntune.net</a>
+    <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
 
   <!-- ============================================================
-    JAVASCRIPT
-    ============================================================
-    Two small scripts that power the animations. Don't edit these.
+    JAVASCRIPT — don't edit these two scripts.
 
     1. Nav shadow: adds a subtle shadow to the nav when you scroll
     2. Scroll animations: elements with class="fade-in" animate
        into view as you scroll past them
   ============================================================ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Add shadow to nav when page is scrolled
+  <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
-    // Fade-in elements as they enter the viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
