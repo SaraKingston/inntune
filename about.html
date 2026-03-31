@@ -8,20 +8,19 @@
   1. HEAD — fonts, colors, and all the styling
   2. NAV — the top navigation bar (same as index.html)
   3. PAGE HEADER — the opening banner with your name and tagline
-  4. STORY — your two-column bio section with photo placeholder
+  4. STORY — your two-column bio section with photo
   5. PHOTO CARDS — the personality cards with photos and captions
   6. BOOK A CALL — the closing call-to-action
   7. FOOTER — the very bottom strip
 
   YOUR PHOTOS:
-  Each photo card has a placeholder (an emoji) where your real
-  photo will go. See the instructions inside each card for
-  exactly how to swap in a real photo.
+  Image files should be in the same folder as this HTML file.
+  The filenames are already set in each card below.
+  If you rename a photo file, update the src="filename.jpg" in
+  the matching card to match.
 
-  YOUR CALENDLY LINK:
-  Search this file for: https://calendar.app.google/HzQwBJVCEmkx34hN8
-  Replace all 2 instances with your actual Calendly URL.
-  Example: https://calendly.com/sara-kingston/discovery-call
+  YOUR BOOKING LINK:
+  Already set to your Google Calendar link throughout this file.
 
   ============================================================
 -->
@@ -96,8 +95,6 @@
       background: var(--white);
       border-bottom: 1px solid var(--border);
       box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-      /* Note: on this page the nav shadow is always visible,
-         since there's no full-screen hero below it */
     }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
@@ -143,8 +140,7 @@
 
     /* ============================================================
       PAGE HEADER STYLES
-      The off-white opening banner with "Hi, I'm Sara Kingston."
-      and the short tagline below it.
+      The off-white opening banner.
     ============================================================ */
     .page-header {
       padding: 10rem 5vw 5rem; /* extra top padding clears the fixed nav */
@@ -171,9 +167,9 @@
 
     /* ============================================================
       STORY SECTION STYLES
-      Two columns: photo on the left, bio text on the right.
-      "sticky" on the photo means it stays in view as you scroll
-      through the longer text column on the right.
+      Two columns: photo on the left (sticky), bio text on the right.
+      "sticky" means the photo stays in view as you scroll through
+      the longer text column on the right.
     ============================================================ */
     .story {
       padding: 6rem 5vw;
@@ -182,36 +178,34 @@
       gap: 6rem;
       align-items: start;
       max-width: 1100px;
-      margin: 0 auto; /* centers the content */
+      margin: 0 auto;
     }
     .story-photo {
       position: sticky;
-      top: 6rem; /* how far from the top it "sticks" when scrolling */
+      top: 6rem;
     }
 
     /* ============================================================
       STORY PHOTO
       ============================================================
-      RIGHT NOW there's a placeholder box here.
-      TO ADD YOUR REAL PHOTO:
-        1. Put your photo file (e.g., sara.jpg) in the same folder
-           as this HTML file
-        2. Find the <div class="story-photo-placeholder"> tag below
-        3. Replace that entire <div> with:
+      TO SWAP THE PLACEHOLDER FOR YOUR REAL PHOTO:
+        1. Save your photo (e.g., sara.jpg) in the same folder as this file
+        2. Delete the <div class="story-photo-placeholder"> block
+        3. Replace it with:
               <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
-        4. Delete the placeholder <div> — you won't need it anymore
 
-      The photo will automatically fill the space and crop to fit.
+      PHOTO TIPS:
+        - Portrait orientation (taller than wide) works best
+        - The image crops to fill a 3:4 ratio frame
     ============================================================ */
     .story-photo-img,
     .story-photo-placeholder {
       width: 100%;
-      aspect-ratio: 3/4;  /* portrait orientation — taller than wide */
-      object-fit: cover;   /* crops the image to fill the space */
+      aspect-ratio: 3/4;
+      object-fit: cover;
       border-radius: 4px;
       display: block;
     }
-    /* Placeholder styles — remove these once you add a real photo */
     .story-photo-placeholder {
       background: var(--blue-light);
       display: flex;
@@ -224,18 +218,17 @@
       padding: 2rem;
     }
 
-    /* Bio text on the right side of the story section */
+    /* Bio text on the right */
     .story-text p {
       color: var(--muted);
       margin-bottom: 1.4rem;
     }
-    .story-text p strong { color: var(--dark); font-weight: 500; } /* bold text inside paragraphs */
+    .story-text p strong { color: var(--dark); font-weight: 500; }
     .story-text h2 { margin-bottom: 1.5rem; }
 
     /* ============================================================
       PHOTO CARDS SECTION STYLES
-      The alternating-background section with your personality cards.
-      Cards sit in a 3-column grid that collapses on smaller screens.
+      Off-white background, 3-column grid of personality cards.
     ============================================================ */
     .photo-cards-section {
       background: var(--off-white);
@@ -259,40 +252,36 @@
     /* Individual card */
     .photo-card {
       border-radius: 4px;
-      overflow: hidden; /* clips the photo to the card's rounded corners */
+      overflow: hidden;
       background: var(--white);
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .photo-card:hover {
-      transform: translateY(-4px); /* lifts the card on hover */
+      transform: translateY(-4px);
       box-shadow: 0 8px 28px rgba(0,0,0,0.1);
     }
 
     /* ============================================================
       PHOTO CARD IMAGES
       ============================================================
-      Each card has a placeholder (emoji) where your photo goes.
-
-      TO REPLACE A PLACEHOLDER WITH A REAL PHOTO:
-        1. Put the photo file in the same folder as this HTML file
-           (e.g., hiking.jpg, cabin.jpg, etc.)
-        2. Find the card you want to update (look for the emoji)
-        3. Delete this line:     <div class="photo-card-img">🥾</div>
-        4. Replace it with:     <img src="hiking.jpg" alt="Sara hiking" class="photo-card-img" />
-        5. Save and refresh your browser to see the change
+      TO SWAP A PLACEHOLDER EMOJI FOR A REAL PHOTO:
+        1. Save the photo in the same folder as this file
+        2. Find the card (look for the emoji or existing filename)
+        3. Replace the placeholder div with:
+              <img src="yourfile.jpg" alt="description" class="photo-card-img" />
+        4. Save and refresh your browser
 
       PHOTO SIZE TIP: Square or landscape (wider than tall) photos
-      work best here. The card will crop them to a 4:3 ratio.
+      work best. Cards crop to a 4:3 ratio.
     ============================================================ */
     .photo-card-img {
       width: 100%;
-      aspect-ratio: 4/3; /* landscape crop — wider than tall */
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      /* Placeholder styles below — the background/flex/font stuff
-         is just for the emoji placeholders. Once you replace with
-         a real <img>, these don't apply. */
+      /* Placeholder-only styles below. These only affect the emoji
+         placeholder divs — not real <img> tags. */
       background: var(--blue-light);
       display: flex;
       align-items: center;
@@ -311,13 +300,12 @@
     .photo-card-body p {
       font-size: 0.88rem;
       color: var(--muted);
-      max-width: none; /* override the global paragraph width limit */
+      max-width: none;
       line-height: 1.6;
     }
 
     /* ============================================================
       BOOK A CALL SECTION STYLES
-      Light blue closing CTA, same as the one on index.html.
     ============================================================ */
     .cta-strip {
       background: var(--blue-light);
@@ -368,7 +356,7 @@
       SCROLL ANIMATIONS
       Elements with class="fade-in" slide up and fade into view
       as you scroll to them. JavaScript handles this below.
-    ============================================================ -->
+    ============================================================ */
     .fade-in {
       opacity: 0;
       transform: translateY(18px);
@@ -385,31 +373,27 @@
     ============================================================ */
     @media (max-width: 768px) {
       .story { grid-template-columns: 1fr; gap: 3rem; }
-      .story-photo { display: none; } /* hide the photo on mobile */
+      .story-photo { display: none; }
       .photo-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
     }
     @media (max-width: 480px) {
-      .photo-grid { grid-template-columns: 1fr; } /* 1 card per row on very small screens */
+      .photo-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <!-- ============================================================
-    NAV BAR — same structure as index.html
-    "InnTune Consulting" links back to the home page.
-    Nav links point to sections on the home page (index.html#...).
-    Replace YOUR-LINK-HERE with your actual Calendly URL.
+    NAV BAR
+    ============================================================
+    TO SWAP TEXT FOR YOUR LOGO IMAGE, replace the <a> tag below with:
+        <a href="index.html">
+          <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
+        </a>
+    Make sure logo.png is in the same folder as this file.
   ============================================================ -->
   <nav>
-    <!--
-      TO SWAP TEXT FOR YOUR LOGO IMAGE, replace the <a> tag below with:
-          <a href="index.html">
-            <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
-          </a>
-      Make sure logo.png is in the same folder as this file.
-    -->
     <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
     <ul class="nav-links">
       <li><a href="index.html#what-i-do">What I do</a></li>
@@ -422,12 +406,10 @@
   <!-- ============================================================
     PAGE HEADER
     ============================================================
-    The opening banner. Off-white background.
-
     WHAT YOU CAN EDIT HERE:
     - "About Sara" — the small label above the heading
-    - "Hi, I'm Sara Kingston." — the main heading (h1)
-    - The tagline paragraph below it (class="lead")
+    - "Hi, I'm Sara Kingston." — the main h1 heading
+    - The tagline paragraph (class="lead")
   ============================================================ -->
   <div class="page-header">
     <span class="section-label">About Sara</span>
@@ -441,13 +423,12 @@
   <!-- ============================================================
     STORY SECTION
     ============================================================
-    Two columns: your main photo on the left (sticky), bio text
-    on the right. White background.
+    Two columns: your main photo on the left, bio text on the right.
 
     WHAT YOU CAN EDIT HERE:
-    - The section heading ("I came to this work from the inside.")
-    - The four paragraphs of bio text
-    - <strong> tags make text bold — use them for emphasis
+    - The section heading
+    - Any of the paragraphs
+    - <strong> tags make text bold
     - The photo (see instructions in the CSS above and inline below)
   ============================================================ -->
   <div class="story fade-in">
@@ -456,25 +437,13 @@
     <div class="story-photo">
       <!--
         YOUR MAIN PHOTO GOES HERE.
-        Right now there's a placeholder box with instructions.
-
         TO ADD YOUR PHOTO:
-          1. Save your photo as "sara.jpg" (or any name you like)
-             in the same folder as this file
-          2. Delete the entire <div class="story-photo-placeholder">
-             block below (from <div to </div>)
-          3. Paste this in its place:
+          1. Save it as "sara.jpg" (or any name) in the same folder
+          2. Delete the <div class="story-photo-placeholder"> block below
+          3. Replace it with:
                 <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
-
-        PHOTO TIPS:
-          - Portrait orientation works best (taller than wide)
-          - The image will be cropped to fill a 3:4 ratio frame
-          - A headshot or half-body photo works great here
       -->
-      <div class="story-photo-placeholder">
-        Add your photo here.<br><br>
-        See the instructions in the comment above this box.
-      </div>
+      <img src="IMG_0560.jpg" alt="Sara Kingston" class="story-photo-img" />
     </div>
 
     <!-- RIGHT COLUMN: bio text -->
@@ -498,12 +467,13 @@
 
       <!-- Paragraph 4 — who you work best with -->
       <p>
-        I work best with <strong>female business owners running lean 1–5 person teams</strong> who are ready to grow but know their current setup won't support it. If that's you, I'd love to talk.
+        I work best with <strong>business owners running lean 1–5 person teams</strong> who are ready to grow but know their current setup won't support it. If that's you, I'd love to talk.
       </p>
 
-      <!-- Paragraph 5 — InnTune brand origin -->
+      <!-- Paragraph 5 — InnTune brand origin
+           Edit this if you want to adjust how you tell the name story. -->
       <p>
-        One more thing: the name. I grew up playing five instruments and still sit down at the piano regularly, so music has always been part of how I think. The science side of it too — frequency, wavelengths, what it actually takes to get disparate signals working in harmony rather than against each other. That's the job, in any industry. InnTune started in hospitality, where "Inn" made literal sense, but the core idea was always about getting all the moving parts of a business onto the same frequency. Turns out that problem doesn't care what industry you're in. The name stayed.
+        One more thing: the name. I grew up playing five instruments and still sit down at the piano regularly. Music is part of how I think, and so is the science behind it: frequency, wavelengths, what it takes to get different signals working in harmony rather than against each other. Multiple instruments, each doing their own thing, all contributing to something that sounds right together. That's what good operations look like, in any industry. InnTune started in hospitality, where "Inn" made literal sense, but the idea underneath it was always broader. The name stuck.
       </p>
     </div>
 
@@ -513,28 +483,14 @@
   <!-- ============================================================
     PHOTO CARDS SECTION
     ============================================================
-    Off-white background, 3-column grid of personality cards.
-    Each card has a photo area and a title + short description.
-
     WHAT YOU CAN EDIT HERE:
-    - The section heading ("A little more about me.")
-    - The intro sentence below it
-    - Each card's title (h3) and description (p)
+    - Section heading and intro line
+    - Each card's title (h3) and caption (p)
 
-    TO REPLACE AN EMOJI PLACEHOLDER WITH A REAL PHOTO:
-      1. Save the photo file in the same folder as this HTML file
-         (e.g., cabin.jpg, hiking.jpg, etc.)
-      2. Find the card you want to update
-      3. Delete the placeholder line, e.g.:
-              <div class="photo-card-img">🌲</div>
-      4. Replace it with:
-              <img src="cabin.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
-      5. Save and refresh your browser
+    TO SWAP AN IMAGE FILE: find the card, locate the src="filename.jpg"
+    on the <img> tag, and update it to match your renamed file.
 
-    TO ADD A NEW CARD: copy one whole card block (from
-    <div class="photo-card"> to its closing </div>) and paste
-    it after the last card. Update the photo and text.
-
+    TO ADD A CARD: copy one whole card block and paste after the last one.
     TO REMOVE A CARD: delete the whole card block.
   ============================================================ -->
   <section class="photo-cards-section">
@@ -543,64 +499,50 @@
 
     <div class="photo-grid fade-in">
 
-      <!-- ── CARD 1: Cabin ── -->
+      <!-- ── CARD 1: Cabin ──
+           src="IMG_7309.jpg" — update if you rename the file -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="IMG_7309.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
-        -->
         <img src="IMG_7309.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Cabin in the woods</h3>
-          <p>I live in the kind of place that requires a commute past trees. I wouldn't have it any other way.</p>
+          <p>I live in a cabin in the woods. A commute past trees is non-negotiable.</p>
         </div>
       </div>
 
-      <!-- ── CARD 2: Hiking ── -->
+      <!-- ── CARD 2: Hiking ──
+           src="FullSizeRender.jpg" — update if you rename the file -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="FullSizeRender.jpg" alt="Sara hiking" class="photo-card-img" />
-        -->
         <img src="FullSizeRender.jpg" alt="Sara hiking" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Avid hiker</h3>
-          <p>Any excuse to get outside. Trails, peaks, long walks, yes to all of it.</p>
+          <p>Any excuse to get outside. Trails, peaks, long walks. I'll take all of it.</p>
         </div>
       </div>
 
-      <!-- ── CARD 3: Skiing ── -->
+      <!-- ── CARD 3: Skiing ──
+           src="IMG_0239.jpg" — update if you rename the file -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="IMG_0239.jpg" alt="Sara cross-country skiing" class="photo-card-img" />
-        -->
         <img src="IMG_0239.jpg" alt="Sara cross-country skiing" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Cross-country skier</h3>
-          <p>Winter doesn't slow me down. If there's snow, I'm moving through it.</p>
+          <p>Winter doesn't slow me down. If there's snow, I'm in it.</p>
         </div>
       </div>
 
-      <!-- ── CARD 4: Air Force ── -->
+      <!-- ── CARD 4: Air Force ──
+           src="IMG_7567.jpg" — update if you rename the file
+           Note: caption includes the height detail — those other guys are tall! -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="IMG_7567.jpg" alt="Sara in the Air Force" class="photo-card-img" />
-        -->
         <img src="IMG_7567.jpg" alt="Sara in the Air Force" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Former Air Force dentist</h3>
-          <p>Yes, really. Precision, discipline, and doing things properly. It stuck with me.</p>
+          <p>Yes, really. (And yes, those other guys are all well over 6 feet. I am not.) Precision, discipline, doing things right. It all stuck.</p>
         </div>
       </div>
 
-      <!-- ── CARD 5: Hammer ── -->
+      <!-- ── CARD 5: Hammer ──
+           src="IMG_1885.jpg" — update if you rename the file -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="IMG_1885.jpg" alt="Sara with a hammer" class="photo-card-img" />
-        -->
         <img src="IMG_1885.jpg" alt="Sara with a hammer" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Can sling a hammer</h3>
@@ -608,30 +550,13 @@
         </div>
       </div>
 
-      <!-- ── CARD 6: Reading ── -->
+      <!-- ── CARD 6: Reading ──
+           src="IMG_7401.jpg" — update if you rename the file -->
       <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="IMG_7401.jpg" alt="Sara reading" class="photo-card-img" />
-        -->
-         <img src="IMG_7401.jpg" alt="Sara reading" class="photo-card-img" />
+        <img src="IMG_7401.jpg" alt="Sara reading" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Always reading</h3>
           <p>Almost always fiction. It's where I decompress and where I do some of my best thinking.</p>
-        </div>
-      </div>
-
-      <!-- ── CARD 7: Height ── -->
-      <div class="photo-card">
-        <!--
-          REPLACE THIS PLACEHOLDER with your real photo:
-          <img src="height.jpg" alt="Sara being under 5 feet tall" class="photo-card-img" />
-          (or just leave the emoji — this one works fine without a photo)
-        -->
-        <div class="photo-card-img">📏</div>
-        <div class="photo-card-body">
-          <h3>Under 5 feet tall</h3>
-          <p>I mention this because people are always surprised. I contain multitudes.</p>
         </div>
       </div>
 
@@ -642,14 +567,10 @@
   <!-- ============================================================
     BOOK A CALL SECTION
     ============================================================
-    Closing CTA. Light blue background.
-
     WHAT YOU CAN EDIT HERE:
-    - "Sound like a fit?" — the small label above the heading
-    - "Let's talk about your business." — the heading
-    - The paragraph below it
+    - "Sound like a fit?" — the small label
+    - The heading and paragraph
     - The button text
-    Replace YOUR-LINK-HERE with your actual Calendly URL.
   ============================================================ -->
   <section class="cta-strip">
     <span class="section-label fade-in">Sound like a fit?</span>
@@ -664,21 +585,31 @@
     ============================================================
     WHAT YOU CAN EDIT HERE:
     - "InnTune Consulting" — your business name
-    - "sara@inntune.net" — update in BOTH the href and the link text
+    - "sara@inntune.net" — update in BOTH the href and the visible text
     - The copyright year
   ============================================================ -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="/cdn-cgi/l/email-protection#6714061506270e09091312090249090213"><span class="__cf_email__" data-cfemail="6615071407260f08081213080348080312">[email&#160;protected]</span></a>
+    <a href="mailto:sara@inntune.net">sara@inntune.net</a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
 
   <!-- ============================================================
-    JAVASCRIPT — don't edit this
+    JAVASCRIPT — don't edit this.
     Fades in elements with class="fade-in" as you scroll to them.
   ============================================================ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
