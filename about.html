@@ -435,15 +435,9 @@
 
     <!-- LEFT COLUMN: main photo -->
     <div class="story-photo">
-      <!--
-        YOUR MAIN PHOTO GOES HERE.
-        TO ADD YOUR PHOTO:
-          1. Save it as "sara.jpg" (or any name) in the same folder
-          2. Delete the <div class="story-photo-placeholder"> block below
-          3. Replace it with:
-                <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
-      -->
-      <img src="IMG_0560.jpg" alt="Sara Kingston" class="story-photo-img" />
+      <!-- Profile photo: IMG_0560.jpeg
+           TO SWAP: change the src filename to match your file -->
+      <img src="IMG_0560.jpeg" alt="Sara Kingston" class="story-photo-img" />
     </div>
 
     <!-- RIGHT COLUMN: bio text -->
@@ -500,29 +494,31 @@
     <div class="photo-grid fade-in">
 
       <!-- ── CARD 1: Cabin ──
-           src="IMG_7309.jpg" — update if you rename the file -->
+           src="IMG_7309.JPG" — feet in a hammock outside the cabin -->
       <div class="photo-card">
-        <img src="IMG_7309.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
+        <img src="IMG_7309.JPG" alt="Relaxing in a hammock outside Sara's cabin" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Cabin in the woods</h3>
           <p>I live in a cabin in the woods. A commute past trees is non-negotiable.</p>
         </div>
       </div>
 
-      <!-- ── CARD 2: Hiking ──
-           src="FullSizeRender.jpg" — update if you rename the file -->
+      <!-- ── CARD 2: Lake / outdoors ──
+           src="IMG_7404.JPG" — paddleboard on the lake
+           Note: no hiking photo in your set — using this instead.
+           If you add a hiking photo later, swap the src and update the title/caption. -->
       <div class="photo-card">
-        <img src="FullSizeRender.jpg" alt="Sara hiking" class="photo-card-img" />
+        <img src="IMG_7404.JPG" alt="Sara on a paddleboard on the lake" class="photo-card-img" />
         <div class="photo-card-body">
-          <h3>Avid hiker</h3>
-          <p>Any excuse to get outside. Trails, peaks, long walks. I'll take all of it.</p>
+          <h3>Any excuse to be outside</h3>
+          <p>Hiking, paddleboarding, skiing. If it's outdoors, I'm in.</p>
         </div>
       </div>
 
       <!-- ── CARD 3: Skiing ──
-           src="IMG_0239.jpg" — update if you rename the file -->
+           src="IMG_0239.jpeg" — update if you rename the file -->
       <div class="photo-card">
-        <img src="IMG_0239.jpg" alt="Sara cross-country skiing" class="photo-card-img" />
+        <img src="IMG_0239.jpeg" alt="Sara cross-country skiing" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Cross-country skier</h3>
           <p>Winter doesn't slow me down. If there's snow, I'm in it.</p>
@@ -540,10 +536,10 @@
         </div>
       </div>
 
-      <!-- ── CARD 5: Hammer ──
-           src="IMG_1885.jpg" — update if you rename the file -->
+      <!-- ── CARD 5: Drill/hammer ──
+           src="IMG_1885.jpeg" — update if you rename the file -->
       <div class="photo-card">
-        <img src="IMG_1885.jpg" alt="Sara with a hammer" class="photo-card-img" />
+        <img src="IMG_1885.jpeg" alt="Sara with a drill in front of the cabin" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Can sling a hammer</h3>
           <p>I built my first STR units myself. I'm comfortable getting into the details, in more ways than one.</p>
@@ -590,7 +586,7 @@
   ============================================================ -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="mailto:sara@inntune.net">sara@inntune.net</a>
+    <a href="/cdn-cgi/l/email-protection#ea998b988baa8384849e9f848fc4848f9e"><span class="__cf_email__" data-cfemail="4a392b382b0a2324243e3f242f64242f3e">[email&#160;protected]</span></a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
@@ -599,17 +595,7 @@
     JAVASCRIPT — don't edit this.
     Fades in elements with class="fade-in" as you scroll to them.
   ============================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
