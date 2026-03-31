@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <!--
-  ============================================================
   INNTUNE CONSULTING — ABOUT PAGE (about.html)
-  ============================================================
 
-  HOW THIS FILE IS ORGANIZED:
-  1. HEAD — fonts, colors, and all the styling
-  2. NAV — the top navigation bar (same as index.html)
-  3. PAGE HEADER — the opening banner with your name and tagline
-  4. STORY — your two-column bio section with photo
-  5. PHOTO CARDS — the personality cards with photos and captions
-  6. BOOK A CALL — the closing call-to-action
-  7. FOOTER — the very bottom strip
+  SECTIONS IN THIS FILE:
+  1. HEAD (styling, fonts, colors)
+  2. NAV (top navigation bar)
+  3. PAGE HEADER (opening banner)
+  4. STORY (two-column bio with profile photo)
+  5. PHOTO CARDS (personality cards grid)
+  6. BOOK A CALL (closing CTA)
+  7. FOOTER
 
-  YOUR PHOTOS:
-  Image files should be in the same folder as this HTML file.
-  The filenames are already set in each card below.
-  If you rename a photo file, update the src="filename.jpg" in
-  the matching card to match.
+  IMAGE FILES — all must be in the same folder as this HTML file:
+    IMG_0560.jpeg — profile photo (story section)
+    IMG_7309.JPG  — feet in hammock (cabin card)
+    FullSizeRender.jpg — hiking photo
+    IMG_7404.JPG  — paddleboard on lake
+    IMG_0239.jpeg — cross-country skiing
+    IMG_7567.JPG  — Air Force group photo
+    IMG_1885.jpeg — drill in front of cabin
+    IMG_7271.JPG  — family photo
+    IMG_7401.JPG  — reading by the lake
 
-  YOUR BOOKING LINK:
-  Already set to your Google Calendar link throughout this file.
+  TO SWAP A PHOTO: find the card in the PHOTO CARDS section,
+  update the src="filename" on the <img> tag to match your file.
 
-  ============================================================
+  YOUR BOOKING LINK: already set throughout this file.
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Page title — shows in browser tab and Google results -->
   <title>About Sara | InnTune Consulting</title>
-
-  <!-- Fonts: Cormorant Garamond (headings) + DM Sans (body text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
   <style>
-    /* ============================================================
-      COLOR PALETTE — same as index.html
-      Change a color here and it updates everywhere on this page.
-    ============================================================ */
+
+    /* COLORS — change a value here to update it everywhere on this page */
     :root {
       --white:      #FFFFFF;
       --off-white:  #F4FAFC;
@@ -54,10 +50,11 @@
       --border:     #DFF0F5;
     }
 
-    /* Basic resets — don't touch these */
+    /* RESET — don't touch */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    /* BODY */
     body {
       background: var(--white);
       color: var(--dark);
@@ -68,7 +65,7 @@
       overflow-x: hidden;
     }
 
-    /* Headings use Cormorant Garamond serif font */
+    /* HEADINGS */
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
@@ -76,14 +73,11 @@
     }
     h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
     h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
-    /* h3 here uses DM Sans (not serif) for the card titles */
     h3 { font-size: 1.1rem; font-weight: 500; font-family: 'DM Sans', sans-serif; }
     p  { max-width: 62ch; }
     a  { color: inherit; }
 
-    /* ============================================================
-      NAV STYLES — identical to index.html
-    ============================================================ */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -104,14 +98,10 @@
       text-decoration: none;
       color: var(--black);
     }
-    .nav-logo span { color: var(--blue-dark); } /* "Tune" in blue */
-
-    /* Logo IMAGE styles — used when you swap the text for an image file */
-    .nav-logo-img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
+    .nav-logo span { color: var(--blue-dark); }
+    /* TO USE A LOGO IMAGE instead of text, swap the <a class="nav-logo"> in the HTML with:
+       <a href="index.html"><img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" /></a> */
+    .nav-logo-img { height: 40px; width: auto; display: block; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -138,16 +128,11 @@
     }
     .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
-    /* ============================================================
-      PAGE HEADER STYLES
-      The off-white opening banner.
-    ============================================================ */
+    /* PAGE HEADER */
     .page-header {
-      padding: 10rem 5vw 5rem; /* extra top padding clears the fixed nav */
+      padding: 10rem 5vw 5rem;
       background: var(--off-white);
     }
-
-    /* Small all-caps label above headings throughout the page */
     .section-label {
       display: block;
       font-size: 0.74rem;
@@ -165,12 +150,7 @@
       line-height: 1.8;
     }
 
-    /* ============================================================
-      STORY SECTION STYLES
-      Two columns: photo on the left (sticky), bio text on the right.
-      "sticky" means the photo stays in view as you scroll through
-      the longer text column on the right.
-    ============================================================ */
+    /* STORY — two-column bio section */
     .story {
       padding: 6rem 5vw;
       display: grid;
@@ -184,52 +164,19 @@
       position: sticky;
       top: 6rem;
     }
-
-    /* ============================================================
-      STORY PHOTO
-      ============================================================
-      TO SWAP THE PLACEHOLDER FOR YOUR REAL PHOTO:
-        1. Save your photo (e.g., sara.jpg) in the same folder as this file
-        2. Delete the <div class="story-photo-placeholder"> block
-        3. Replace it with:
-              <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
-
-      PHOTO TIPS:
-        - Portrait orientation (taller than wide) works best
-        - The image crops to fill a 3:4 ratio frame
-    ============================================================ */
-    .story-photo-img,
-    .story-photo-placeholder {
+    /* Profile photo — crops to portrait (3:4 ratio) */
+    .story-photo-img {
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
       border-radius: 4px;
       display: block;
     }
-    .story-photo-placeholder {
-      background: var(--blue-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--blue-dark);
-      font-size: 0.85rem;
-      text-align: center;
-      border: 2px dashed var(--blue);
-      padding: 2rem;
-    }
-
-    /* Bio text on the right */
-    .story-text p {
-      color: var(--muted);
-      margin-bottom: 1.4rem;
-    }
+    .story-text p { color: var(--muted); margin-bottom: 1.4rem; }
     .story-text p strong { color: var(--dark); font-weight: 500; }
     .story-text h2 { margin-bottom: 1.5rem; }
 
-    /* ============================================================
-      PHOTO CARDS SECTION STYLES
-      Off-white background, 3-column grid of personality cards.
-    ============================================================ */
+    /* PHOTO CARDS — 3-column grid */
     .photo-cards-section {
       background: var(--off-white);
       padding: 6rem 5vw;
@@ -240,16 +187,12 @@
       margin-bottom: 3rem;
       font-size: 1.05rem;
     }
-
-    /* The grid that holds all the cards */
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
       max-width: 1100px;
     }
-
-    /* Individual card */
     .photo-card {
       border-radius: 4px;
       overflow: hidden;
@@ -261,42 +204,16 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 28px rgba(0,0,0,0.1);
     }
-
-    /* ============================================================
-      PHOTO CARD IMAGES
-      ============================================================
-      TO SWAP A PLACEHOLDER EMOJI FOR A REAL PHOTO:
-        1. Save the photo in the same folder as this file
-        2. Find the card (look for the emoji or existing filename)
-        3. Replace the placeholder div with:
-              <img src="yourfile.jpg" alt="description" class="photo-card-img" />
-        4. Save and refresh your browser
-
-      PHOTO SIZE TIP: Square or landscape (wider than tall) photos
-      work best. Cards crop to a 4:3 ratio.
-    ============================================================ */
+    /* Photo card image — crops to landscape (4:3 ratio)
+       TO SWAP A PHOTO: update the src="filename" on the <img> tag in the HTML */
     .photo-card-img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      /* Placeholder-only styles below. These only affect the emoji
-         placeholder divs — not real <img> tags. */
-      background: var(--blue-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
     }
-
-    /* The text area below each photo */
-    .photo-card-body {
-      padding: 1.1rem 1.2rem 1.2rem;
-    }
-    .photo-card-body h3 {
-      margin-bottom: 0.3rem;
-      color: var(--black);
-    }
+    .photo-card-body { padding: 1.1rem 1.2rem 1.2rem; }
+    .photo-card-body h3 { margin-bottom: 0.3rem; color: var(--black); }
     .photo-card-body p {
       font-size: 0.88rem;
       color: var(--muted);
@@ -304,18 +221,11 @@
       line-height: 1.6;
     }
 
-    /* ============================================================
-      BOOK A CALL SECTION STYLES
-    ============================================================ */
-    .cta-strip {
-      background: var(--blue-light);
-      text-align: center;
-      padding: 6rem 5vw;
-    }
+    /* BOOK A CALL */
+    .cta-strip { background: var(--blue-light); text-align: center; padding: 6rem 5vw; }
     .cta-strip .section-label { color: var(--blue-dark); }
     .cta-strip h2 { max-width: 16ch; margin: 0 auto 1.5rem; color: var(--black); }
     .cta-strip p  { color: var(--muted); margin: 0 auto 2.5rem; font-size: 1.05rem; max-width: 46ch; }
-
     .btn-dark {
       display: inline-block;
       padding: 1rem 2.4rem;
@@ -334,9 +244,7 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.18);
     }
 
-    /* ============================================================
-      FOOTER STYLES — same as index.html
-    ============================================================ */
+    /* FOOTER */
     footer {
       background: var(--dark);
       color: rgba(255,255,255,0.4);
@@ -352,11 +260,7 @@
     footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--white); }
 
-    /* ============================================================
-      SCROLL ANIMATIONS
-      Elements with class="fade-in" slide up and fade into view
-      as you scroll to them. JavaScript handles this below.
-    ============================================================ */
+    /* ANIMATIONS */
     .fade-in {
       opacity: 0;
       transform: translateY(18px);
@@ -364,13 +268,7 @@
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ============================================================
-      RESPONSIVE STYLES
-      On small screens (phones/tablets under 768px wide):
-      - Story section collapses to one column, photo hidden
-      - Photo cards go from 3 columns to 2 columns
-      - Nav links are hidden
-    ============================================================ */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .story { grid-template-columns: 1fr; gap: 3rem; }
       .story-photo { display: none; }
@@ -380,19 +278,12 @@
     @media (max-width: 480px) {
       .photo-grid { grid-template-columns: 1fr; }
     }
+
   </style>
 </head>
 <body>
 
-  <!-- ============================================================
-    NAV BAR
-    ============================================================
-    TO SWAP TEXT FOR YOUR LOGO IMAGE, replace the <a> tag below with:
-        <a href="index.html">
-          <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
-        </a>
-    Make sure logo.png is in the same folder as this file.
-  ============================================================ -->
+  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
     <ul class="nav-links">
@@ -403,14 +294,7 @@
   </nav>
 
 
-  <!-- ============================================================
-    PAGE HEADER
-    ============================================================
-    WHAT YOU CAN EDIT HERE:
-    - "About Sara" — the small label above the heading
-    - "Hi, I'm Sara Kingston." — the main h1 heading
-    - The tagline paragraph (class="lead")
-  ============================================================ -->
+  <!-- PAGE HEADER -->
   <div class="page-header">
     <span class="section-label">About Sara</span>
     <h1>Hi, I'm Sara Kingston.</h1>
@@ -420,52 +304,36 @@
   </div>
 
 
-  <!-- ============================================================
-    STORY SECTION
-    ============================================================
-    Two columns: your main photo on the left, bio text on the right.
-
-    WHAT YOU CAN EDIT HERE:
-    - The section heading
-    - Any of the paragraphs
-    - <strong> tags make text bold
-    - The photo (see instructions in the CSS above and inline below)
-  ============================================================ -->
+  <!-- STORY — two-column section with profile photo and bio text -->
   <div class="story fade-in">
 
-    <!-- LEFT COLUMN: main photo -->
+    <!-- Left column: profile photo
+         TO SWAP: update src="IMG_0560.jpeg" to match your filename -->
     <div class="story-photo">
-      <!-- Profile photo: IMG_0560.jpeg
-           TO SWAP: change the src filename to match your file -->
       <img src="IMG_0560.jpeg" alt="Sara Kingston" class="story-photo-img" />
     </div>
 
-    <!-- RIGHT COLUMN: bio text -->
+    <!-- Right column: bio text — edit the paragraphs here -->
     <div class="story-text">
       <h2>I came to this work from the inside.</h2>
 
-      <!-- Paragraph 1 — your origin story -->
       <p>
         I started my first business (a short-term rental portfolio) while on active duty as a dentist in the Air Force. By the time I had 9 units running, I'd realized something: <strong>what I actually loved wasn't the properties. It was the back-end systems.</strong> The automation, the documentation, the challenge of making things run without me in the middle of every decision.
       </p>
 
-      <!-- Paragraph 2 — how your client base expanded -->
       <p>
         I started helping other hospitality owners get their operations in order. Over time, my clients grew to include construction companies, digital product businesses, legal platforms, property managers, and beyond. The industry changes. The problem is always the same: a capable, driven owner who has become the ceiling of their own business.
       </p>
 
-      <!-- Paragraph 3 — what you bring to the work -->
       <p>
         What I bring to this work is a little unusual. I can hold the big picture and the smallest details at the same time, and I genuinely enjoy both. I care about getting it right, not just getting it done. And I'm not the kind of consultant who hands you a deck and disappears.
       </p>
 
-      <!-- Paragraph 4 — who you work best with -->
       <p>
         I work best with <strong>business owners running lean 1–5 person teams</strong> who are ready to grow but know their current setup won't support it. If that's you, I'd love to talk.
       </p>
 
-      <!-- Paragraph 5 — InnTune brand origin
-           Edit this if you want to adjust how you tell the name story. -->
+      <!-- InnTune name origin -->
       <p>
         One more thing: the name. I grew up playing five instruments and still sit down at the piano regularly. Music is part of how I think, and so is the science behind it: frequency, wavelengths, what it takes to get different signals working in harmony rather than against each other. Multiple instruments, each doing their own thing, all contributing to something that sounds right together. That's what good operations look like, in any industry. InnTune started in hospitality, where "Inn" made literal sense, but the idea underneath it was always broader. The name stuck.
       </p>
@@ -474,27 +342,17 @@
   </div>
 
 
-  <!-- ============================================================
-    PHOTO CARDS SECTION
-    ============================================================
-    WHAT YOU CAN EDIT HERE:
-    - Section heading and intro line
-    - Each card's title (h3) and caption (p)
-
-    TO SWAP AN IMAGE FILE: find the card, locate the src="filename.jpg"
-    on the <img> tag, and update it to match your renamed file.
-
-    TO ADD A CARD: copy one whole card block and paste after the last one.
-    TO REMOVE A CARD: delete the whole card block.
-  ============================================================ -->
+  <!-- PHOTO CARDS
+       Each card has an <img> with a src="filename" — update that filename to swap photos.
+       TO ADD A CARD: copy a whole <div class="photo-card"> block and paste after the last one.
+       TO REMOVE A CARD: delete a whole <div class="photo-card"> block. -->
   <section class="photo-cards-section">
     <h2 class="fade-in">A little more about me.</h2>
     <p class="intro fade-in">Outside of client work, here's what you'd actually find me doing.</p>
 
     <div class="photo-grid fade-in">
 
-      <!-- ── CARD 1: Cabin ──
-           src="IMG_7309.JPG" — feet in a hammock outside the cabin -->
+      <!-- Card 1: Cabin — IMG_7309.JPG (feet in hammock) -->
       <div class="photo-card">
         <img src="IMG_7309.JPG" alt="Relaxing in a hammock outside Sara's cabin" class="photo-card-img" />
         <div class="photo-card-body">
@@ -503,20 +361,16 @@
         </div>
       </div>
 
-      <!-- ── CARD 2: Lake / outdoors ──
-           src="IMG_7404.JPG" — paddleboard on the lake
-           Note: no hiking photo in your set — using this instead.
-           If you add a hiking photo later, swap the src and update the title/caption. -->
+      <!-- Card 2: Hiking — FullSizeRender.jpg -->
       <div class="photo-card">
-        <img src="IMG_7404.JPG" alt="Sara on a paddleboard on the lake" class="photo-card-img" />
+        <img src="FullSizeRender.jpg" alt="Sara out on a hike" class="photo-card-img" />
         <div class="photo-card-body">
-          <h3>Any excuse to be outside</h3>
-          <p>Hiking, paddleboarding, skiing. If it's outdoors, I'm in.</p>
+          <h3>I love a good hike</h3>
+          <p>Not training for anything. Just outside, moving, and thinking.</p>
         </div>
       </div>
 
-      <!-- ── CARD 3: Skiing ──
-           src="IMG_0239.jpeg" — update if you rename the file -->
+      <!-- Card 3: Skiing — IMG_0239.jpeg -->
       <div class="photo-card">
         <img src="IMG_0239.jpeg" alt="Sara cross-country skiing" class="photo-card-img" />
         <div class="photo-card-body">
@@ -525,19 +379,17 @@
         </div>
       </div>
 
-      <!-- ── CARD 4: Air Force ──
-           src="IMG_7567.jpg" — update if you rename the file
-           Note: caption includes the height detail — those other guys are tall! -->
+      <!-- Card 4: Air Force — IMG_7567.JPG
+           Caption includes the height joke — those other guys are tall! -->
       <div class="photo-card">
-        <img src="IMG_7567.jpg" alt="Sara in the Air Force" class="photo-card-img" />
+        <img src="IMG_7567.JPG" alt="Sara with fellow Air Force dentists" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Former Air Force dentist</h3>
           <p>Yes, really. (And yes, those other guys are all well over 6 feet. I am not.) Precision, discipline, doing things right. It all stuck.</p>
         </div>
       </div>
 
-      <!-- ── CARD 5: Drill/hammer ──
-           src="IMG_1885.jpeg" — update if you rename the file -->
+      <!-- Card 5: Drill/cabin — IMG_1885.jpeg -->
       <div class="photo-card">
         <img src="IMG_1885.jpeg" alt="Sara with a drill in front of the cabin" class="photo-card-img" />
         <div class="photo-card-body">
@@ -546,13 +398,30 @@
         </div>
       </div>
 
-      <!-- ── CARD 6: Reading ──
-           src="IMG_7401.jpg" — update if you rename the file -->
+      <!-- Card 6: Family — IMG_7271.JPG -->
       <div class="photo-card">
-        <img src="IMG_7401.jpg" alt="Sara reading" class="photo-card-img" />
+        <img src="IMG_7271.JPG" alt="Sara with her family" class="photo-card-img" />
+        <div class="photo-card-body">
+          <h3>My whole family</h3>
+          <p>They're the reason I care about building things that last.</p>
+        </div>
+      </div>
+
+      <!-- Card 7: Reading — IMG_7401.JPG -->
+      <div class="photo-card">
+        <img src="IMG_7401.JPG" alt="Sara reading by the lake" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>Always reading</h3>
           <p>Almost always fiction. It's where I decompress and where I do some of my best thinking.</p>
+        </div>
+      </div>
+
+      <!-- Card 8: Paddleboard — IMG_7404.JPG -->
+      <div class="photo-card">
+        <img src="IMG_7404.JPG" alt="Sara on a paddleboard on the lake" class="photo-card-img" />
+        <div class="photo-card-body">
+          <h3>On the water</h3>
+          <p>Paddleboarding, swimming, or just sitting by the lake. Water is where I reset.</p>
         </div>
       </div>
 
@@ -560,14 +429,7 @@
   </section>
 
 
-  <!-- ============================================================
-    BOOK A CALL SECTION
-    ============================================================
-    WHAT YOU CAN EDIT HERE:
-    - "Sound like a fit?" — the small label
-    - The heading and paragraph
-    - The button text
-  ============================================================ -->
+  <!-- BOOK A CALL -->
   <section class="cta-strip">
     <span class="section-label fade-in">Sound like a fit?</span>
     <h2 class="fade-in">Let's talk about your business.</h2>
@@ -576,26 +438,23 @@
   </section>
 
 
-  <!-- ============================================================
-    FOOTER
-    ============================================================
-    WHAT YOU CAN EDIT HERE:
-    - "InnTune Consulting" — your business name
-    - "sara@inntune.net" — update in BOTH the href and the visible text
-    - The copyright year
-  ============================================================ -->
+  <!-- FOOTER — update your email in both the href="mailto:..." and the visible text -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="/cdn-cgi/l/email-protection#ea998b988baa8384849e9f848fc4848f9e"><span class="__cf_email__" data-cfemail="4a392b382b0a2324243e3f242f64242f3e">[email&#160;protected]</span></a>
+    <a href="mailto:sara@inntune.net">sara@inntune.net</a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
 
-  <!-- ============================================================
-    JAVASCRIPT — don't edit this.
-    Fades in elements with class="fade-in" as you scroll to them.
-  ============================================================ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <!-- JAVASCRIPT — don't edit this -->
+  <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
