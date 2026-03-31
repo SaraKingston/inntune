@@ -197,15 +197,18 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;  /* centers content horizontally */
+      text-align: center;        /* centers the text */
       padding: 9rem 5vw 6rem;
       position: relative;
       overflow: hidden;
-      background: radial-gradient(ellipse 70% 80% at 85% 10%, rgba(197, 234, 242, 0.55) 0%, var(--white) 65%);
+      background: radial-gradient(ellipse 80% 70% at 50% 20%, rgba(197, 234, 242, 0.5) 0%, var(--white) 65%);
     }
     .hero-content {
       position: relative;
       z-index: 1;
       max-width: 700px;
+      margin: 0 auto; /* centers the content block */
     }
 
     /* Small all-caps label above the main headline */
@@ -242,7 +245,8 @@
       display: flex;
       gap: 1.2rem;
       align-items: center;
-      flex-wrap: wrap; /* wraps to next line on small screens */
+      justify-content: center;  /* centers the buttons when text is centered */
+      flex-wrap: wrap;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.65s;
     }
@@ -649,11 +653,11 @@
           Replace YOUR-VIDEO-ID below with your actual YouTube video ID.
           It appears in TWO places in this block.
         -->
-        <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID"
+        <a href="https://www.youtube.com/shorts/1wrSFqBa15Y"
            target="_blank"
            class="testimonial-video"
            aria-label="Watch Russell's video testimonial">
-          <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID/maxresdefault.jpg"
+          <img src="https://img.youtube.com/vi/1wrSFqBa15Y/maxresdefault.jpg"
                alt="Russell from Tap Stays shares his experience working with Sara" />
         </a>
         <div class="testimonial-card-body">
@@ -669,11 +673,11 @@
           Replace YOUR-VIDEO-ID-2 below with your second video's YouTube ID.
           It appears in TWO places in this block.
         -->
-        <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID-2"
+        <a href="https://www.youtube.com/shorts/5ibefMoDoO4"
            target="_blank"
            class="testimonial-video"
            aria-label="Watch Dwight's video testimonial">
-          <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID-2/maxresdefault.jpg"
+          <img src="https://img.youtube.com/vi/5ibefMoDoO4/maxresdefault.jpg"
                alt="Dwight from Northpoint Hospitality shares his experience working with Sara" />
         </a>
         <div class="testimonial-card-body">
@@ -713,7 +717,7 @@
   ============================================================ -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="mailto:sara@inntune.net">sara@inntune.net</a>
+    <a href="/cdn-cgi/l/email-protection#a3d0c2d1c2e3cacdcdd7d6cdc68dcdc6d7"><span class="__cf_email__" data-cfemail="97e4f6e5f6d7fef9f9e3e2f9f2b9f9f2e3">[email&#160;protected]</span></a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
@@ -725,20 +729,10 @@
     2. Scroll animations: elements with class="fade-in" animate
        into view as you scroll past them
   ============================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
