@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  INNTUNE CONSULTING — ABOUT PAGE (about.html)
+  ============================================================
+
+  HOW THIS FILE IS ORGANIZED:
+  1. HEAD — fonts, colors, and all the styling
+  2. NAV — the top navigation bar (same as index.html)
+  3. PAGE HEADER — the opening banner with your name and tagline
+  4. STORY — your two-column bio section with photo placeholder
+  5. PHOTO CARDS — the personality cards with photos and captions
+  6. BOOK A CALL — the closing call-to-action
+  7. FOOTER — the very bottom strip
+
+  YOUR PHOTOS:
+  Each photo card has a placeholder (an emoji) where your real
+  photo will go. See the instructions inside each card for
+  exactly how to swap in a real photo.
+
+  YOUR CALENDLY LINK:
+  Search this file for: YOUR-LINK-HERE
+  Replace all 2 instances with your actual Calendly URL.
+  Example: https://calendly.com/sara-kingston/discovery-call
+
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page title — shows in browser tab and Google results -->
+  <title>About Sara | InnTune Consulting</title>
+
+  <!-- Fonts: Cormorant Garamond (headings) + DM Sans (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+      COLOR PALETTE — same as index.html
+      Change a color here and it updates everywhere on this page.
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --off-white:  #F4FAFC;
+      --blue-light: #C5EAF2;
+      --blue:       #5BBFD6;
+      --blue-dark:  #2F9DB8;
+      --black:      #111111;
+      --dark:       #1E1E1E;
+      --muted:      #555555;
+      --border:     #DFF0F5;
+    }
+
+    /* Basic resets — don't touch these */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* Headings use Cormorant Garamond serif font */
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    /* h3 here uses DM Sans (not serif) for the card titles */
+    h3 { font-size: 1.1rem; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    p  { max-width: 62ch; }
+    a  { color: inherit; }
+
+    /* ============================================================
+      NAV STYLES — identical to index.html
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      /* Note: on this page the nav shadow is always visible,
+         since there's no full-screen hero below it */
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--black);
+    }
+    .nav-logo span { color: var(--blue-dark); } /* "Tune" in blue */
+
+    /* Logo IMAGE styles — used when you swap the text for an image file */
+    .nav-logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      background: var(--blue);
+      color: var(--white) !important;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ============================================================
+      PAGE HEADER STYLES
+      The off-white opening banner with "Hi, I'm Sara Kingston."
+      and the short tagline below it.
+    ============================================================ */
+    .page-header {
+      padding: 10rem 5vw 5rem; /* extra top padding clears the fixed nav */
+      background: var(--off-white);
+    }
+
+    /* Small all-caps label above headings throughout the page */
+    .section-label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+    .page-header h1 { margin-bottom: 1.5rem; }
+    .page-header .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+      STORY SECTION STYLES
+      Two columns: photo on the left, bio text on the right.
+      "sticky" on the photo means it stays in view as you scroll
+      through the longer text column on the right.
+    ============================================================ */
+    .story {
+      padding: 6rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto; /* centers the content */
+    }
+    .story-photo {
+      position: sticky;
+      top: 6rem; /* how far from the top it "sticks" when scrolling */
+    }
+
+    /* ============================================================
+      STORY PHOTO
+      ============================================================
+      RIGHT NOW there's a placeholder box here.
+      TO ADD YOUR REAL PHOTO:
+        1. Put your photo file (e.g., sara.jpg) in the same folder
+           as this HTML file
+        2. Find the <div class="story-photo-placeholder"> tag below
+        3. Replace that entire <div> with:
+              <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
+        4. Delete the placeholder <div> — you won't need it anymore
+
+      The photo will automatically fill the space and crop to fit.
+    ============================================================ */
+    .story-photo-img,
+    .story-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;  /* portrait orientation — taller than wide */
+      object-fit: cover;   /* crops the image to fill the space */
+      border-radius: 4px;
+      display: block;
+    }
+    /* Placeholder styles — remove these once you add a real photo */
+    .story-photo-placeholder {
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-dark);
+      font-size: 0.85rem;
+      text-align: center;
+      border: 2px dashed var(--blue);
+      padding: 2rem;
+    }
+
+    /* Bio text on the right side of the story section */
+    .story-text p {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .story-text p strong { color: var(--dark); font-weight: 500; } /* bold text inside paragraphs */
+    .story-text h2 { margin-bottom: 1.5rem; }
+
+    /* ============================================================
+      PHOTO CARDS SECTION STYLES
+      The alternating-background section with your personality cards.
+      Cards sit in a 3-column grid that collapses on smaller screens.
+    ============================================================ */
+    .photo-cards-section {
+      background: var(--off-white);
+      padding: 6rem 5vw;
+    }
+    .photo-cards-section h2 { margin-bottom: 0.75rem; }
+    .photo-cards-section .intro {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+
+    /* The grid that holds all the cards */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+      gap: 1.25rem;
+      max-width: 1100px;
+    }
+
+    /* Individual card */
+    .photo-card {
+      border-radius: 4px;
+      overflow: hidden; /* clips the photo to the card's rounded corners */
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .photo-card:hover {
+      transform: translateY(-4px); /* lifts the card on hover */
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+    }
+
+    /* ============================================================
+      PHOTO CARD IMAGES
+      ============================================================
+      Each card has a placeholder (emoji) where your photo goes.
+
+      TO REPLACE A PLACEHOLDER WITH A REAL PHOTO:
+        1. Put the photo file in the same folder as this HTML file
+           (e.g., hiking.jpg, cabin.jpg, etc.)
+        2. Find the card you want to update (look for the emoji)
+        3. Delete this line:     <div class="photo-card-img">🥾</div>
+        4. Replace it with:     <img src="hiking.jpg" alt="Sara hiking" class="photo-card-img" />
+        5. Save and refresh your browser to see the change
+
+      PHOTO SIZE TIP: Square or landscape (wider than tall) photos
+      work best here. The card will crop them to a 4:3 ratio.
+    ============================================================ */
+    .photo-card-img {
+      width: 100%;
+      aspect-ratio: 4/3; /* landscape crop — wider than tall */
+      object-fit: cover;
+      display: block;
+      /* Placeholder styles below — the background/flex/font stuff
+         is just for the emoji placeholders. Once you replace with
+         a real <img>, these don't apply. */
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    /* The text area below each photo */
+    .photo-card-body {
+      padding: 1.1rem 1.2rem 1.2rem;
+    }
+    .photo-card-body h3 {
+      margin-bottom: 0.3rem;
+      color: var(--black);
+    }
+    .photo-card-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: none; /* override the global paragraph width limit */
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+      BOOK A CALL SECTION STYLES
+      Light blue closing CTA, same as the one on index.html.
+    ============================================================ */
+    .cta-strip {
+      background: var(--blue-light);
+      text-align: center;
+      padding: 6rem 5vw;
+    }
+    .cta-strip .section-label { color: var(--blue-dark); }
+    .cta-strip h2 { max-width: 16ch; margin: 0 auto 1.5rem; color: var(--black); }
+    .cta-strip p  { color: var(--muted); margin: 0 auto 2.5rem; font-size: 1.05rem; max-width: 46ch; }
+
+    .btn-dark {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-dark:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    /* ============================================================
+      FOOTER STYLES — same as index.html
+    ============================================================ */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.83rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white); }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    /* ============================================================
+      SCROLL ANIMATIONS
+      Elements with class="fade-in" slide up and fade into view
+      as you scroll to them. JavaScript handles this below.
+    ============================================================ -->
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+      RESPONSIVE STYLES
+      On small screens (phones/tablets under 768px wide):
+      - Story section collapses to one column, photo hidden
+      - Photo cards go from 3 columns to 2 columns
+      - Nav links are hidden
+    ============================================================ */
+    @media (max-width: 768px) {
+      .story { grid-template-columns: 1fr; gap: 3rem; }
+      .story-photo { display: none; } /* hide the photo on mobile */
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; } /* 1 card per row on very small screens */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+    NAV BAR — same structure as index.html
+    "InnTune Consulting" links back to the home page.
+    Nav links point to sections on the home page (index.html#...).
+    Replace YOUR-LINK-HERE with your actual Calendly URL.
+  ============================================================ -->
+  <nav>
+    <!--
+      TO SWAP TEXT FOR YOUR LOGO IMAGE, replace the <a> tag below with:
+          <a href="index.html">
+            <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
+          </a>
+      Make sure logo.png is in the same folder as this file.
+    -->
+    <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
+    <ul class="nav-links">
+      <li><a href="index.html#what-i-do">What I do</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="nav-cta">Book a call</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+    PAGE HEADER
+    ============================================================
+    The opening banner. Off-white background.
+
+    WHAT YOU CAN EDIT HERE:
+    - "About Sara" — the small label above the heading
+    - "Hi, I'm Sara Kingston." — the main heading (h1)
+    - The tagline paragraph below it (class="lead")
+  ============================================================ -->
+  <div class="page-header">
+    <span class="section-label">About Sara</span>
+    <h1>Hi, I'm Sara Kingston.</h1>
+    <p class="lead">
+      I help small business owners get out of their own way by building the systems, structure, and processes that let their business actually run.
+    </p>
+  </div>
+
+
+  <!-- ============================================================
+    STORY SECTION
+    ============================================================
+    Two columns: your main photo on the left (sticky), bio text
+    on the right. White background.
+
+    WHAT YOU CAN EDIT HERE:
+    - The section heading ("I came to this work from the inside.")
+    - The four paragraphs of bio text
+    - <strong> tags make text bold — use them for emphasis
+    - The photo (see instructions in the CSS above and inline below)
+  ============================================================ -->
+  <div class="story fade-in">
+
+    <!-- LEFT COLUMN: main photo -->
+    <div class="story-photo">
+      <!--
+        YOUR MAIN PHOTO GOES HERE.
+        Right now there's a placeholder box with instructions.
+
+        TO ADD YOUR PHOTO:
+          1. Save your photo as "sara.jpg" (or any name you like)
+             in the same folder as this file
+          2. Delete the entire <div class="story-photo-placeholder">
+             block below (from <div to </div>)
+          3. Paste this in its place:
+                <img src="sara.jpg" alt="Sara Kingston" class="story-photo-img" />
+
+        PHOTO TIPS:
+          - Portrait orientation works best (taller than wide)
+          - The image will be cropped to fill a 3:4 ratio frame
+          - A headshot or half-body photo works great here
+      -->
+      <div class="story-photo-placeholder">
+        Add your photo here.<br><br>
+        See the instructions in the comment above this box.
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: bio text -->
+    <div class="story-text">
+      <h2>I came to this work from the inside.</h2>
+
+      <!-- Paragraph 1 — your origin story -->
+      <p>
+        I started my first business (a short-term rental portfolio) while on active duty as a dentist in the Air Force. By the time I had 9 units running, I'd realized something: <strong>what I actually loved wasn't the properties. It was the back-end systems.</strong> The automation, the documentation, the challenge of making things run without me in the middle of every decision.
+      </p>
+
+      <!-- Paragraph 2 — how your client base expanded -->
+      <p>
+        I started helping other hospitality owners get their operations in order. Over time, my clients grew to include construction companies, digital product businesses, legal platforms, property managers, and beyond. The industry changes. The problem is always the same: a capable, driven owner who has become the ceiling of their own business.
+      </p>
+
+      <!-- Paragraph 3 — what you bring to the work -->
+      <p>
+        What I bring to this work is a little unusual. I can hold the big picture and the smallest details at the same time, and I genuinely enjoy both. I care about getting it right, not just getting it done. And I'm not the kind of consultant who hands you a deck and disappears.
+      </p>
+
+      <!-- Paragraph 4 — who you work best with -->
+      <p>
+        I work best with <strong>female business owners running lean 1–5 person teams</strong> who are ready to grow but know their current setup won't support it. If that's you, I'd love to talk.
+      </p>
+
+      <!-- Paragraph 5 — InnTune brand origin -->
+      <p>
+        One more thing: the name. I grew up playing five instruments and still sit down at the piano regularly, so music has always been part of how I think. The science side of it too — frequency, wavelengths, what it actually takes to get disparate signals working in harmony rather than against each other. That's the job, in any industry. InnTune started in hospitality, where "Inn" made literal sense, but the core idea was always about getting all the moving parts of a business onto the same frequency. Turns out that problem doesn't care what industry you're in. The name stayed.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================
+    PHOTO CARDS SECTION
+    ============================================================
+    Off-white background, 3-column grid of personality cards.
+    Each card has a photo area and a title + short description.
+
+    WHAT YOU CAN EDIT HERE:
+    - The section heading ("A little more about me.")
+    - The intro sentence below it
+    - Each card's title (h3) and description (p)
+
+    TO REPLACE AN EMOJI PLACEHOLDER WITH A REAL PHOTO:
+      1. Save the photo file in the same folder as this HTML file
+         (e.g., cabin.jpg, hiking.jpg, etc.)
+      2. Find the card you want to update
+      3. Delete the placeholder line, e.g.:
+              <div class="photo-card-img">🌲</div>
+      4. Replace it with:
+              <img src="cabin.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
+      5. Save and refresh your browser
+
+    TO ADD A NEW CARD: copy one whole card block (from
+    <div class="photo-card"> to its closing </div>) and paste
+    it after the last card. Update the photo and text.
+
+    TO REMOVE A CARD: delete the whole card block.
+  ============================================================ -->
+  <section class="photo-cards-section">
+    <h2 class="fade-in">A little more about me.</h2>
+    <p class="intro fade-in">Outside of client work, here's what you'd actually find me doing.</p>
+
+    <div class="photo-grid fade-in">
+
+      <!-- ── CARD 1: Cabin ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="cabin.jpg" alt="Sara's cabin in the woods" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">🌲</div>
+        <div class="photo-card-body">
+          <h3>Cabin in the woods</h3>
+          <p>I live in the kind of place that requires a commute past trees. I wouldn't have it any other way.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 2: Hiking ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="hiking.jpg" alt="Sara hiking" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">🥾</div>
+        <div class="photo-card-body">
+          <h3>Avid hiker</h3>
+          <p>Any excuse to get outside. Trails, peaks, long walks, yes to all of it.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 3: Skiing ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="skiing.jpg" alt="Sara cross-country skiing" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">⛷️</div>
+        <div class="photo-card-body">
+          <h3>Cross-country skier</h3>
+          <p>Winter doesn't slow me down. If there's snow, I'm moving through it.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 4: Air Force ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="airforce.jpg" alt="Sara in the Air Force" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">✈️</div>
+        <div class="photo-card-body">
+          <h3>Former Air Force dentist</h3>
+          <p>Yes, really. Precision, discipline, and doing things properly. It stuck with me.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 5: Hammer ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="tools.jpg" alt="Sara with a hammer" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">🔨</div>
+        <div class="photo-card-body">
+          <h3>Can sling a hammer</h3>
+          <p>I built my first STR units myself. I'm comfortable getting into the details, in more ways than one.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 6: Reading ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="reading.jpg" alt="Sara reading" class="photo-card-img" />
+        -->
+        <div class="photo-card-img">📚</div>
+        <div class="photo-card-body">
+          <h3>Always reading</h3>
+          <p>Almost always fiction. It's where I decompress and where I do some of my best thinking.</p>
+        </div>
+      </div>
+
+      <!-- ── CARD 7: Height ── -->
+      <div class="photo-card">
+        <!--
+          REPLACE THIS PLACEHOLDER with your real photo:
+          <img src="height.jpg" alt="Sara being under 5 feet tall" class="photo-card-img" />
+          (or just leave the emoji — this one works fine without a photo)
+        -->
+        <div class="photo-card-img">📏</div>
+        <div class="photo-card-body">
+          <h3>Under 5 feet tall</h3>
+          <p>I mention this because people are always surprised. I contain multitudes.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    BOOK A CALL SECTION
+    ============================================================
+    Closing CTA. Light blue background.
+
+    WHAT YOU CAN EDIT HERE:
+    - "Sound like a fit?" — the small label above the heading
+    - "Let's talk about your business." — the heading
+    - The paragraph below it
+    - The button text
+    Replace YOUR-LINK-HERE with your actual Calendly URL.
+  ============================================================ -->
+  <section class="cta-strip">
+    <span class="section-label fade-in">Sound like a fit?</span>
+    <h2 class="fade-in">Let's talk about your business.</h2>
+    <p class="fade-in">If any of this sounds like where you are, I'd genuinely love to hear about your business. Book a free discovery call and let's figure out where to start.</p>
+    <a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="btn-dark fade-in">Book a free discovery call</a>
+  </section>
+
+
+  <!-- ============================================================
+    FOOTER
+    ============================================================
+    WHAT YOU CAN EDIT HERE:
+    - "InnTune Consulting" — your business name
+    - "sara@inntune.net" — update in BOTH the href and the link text
+    - The copyright year
+  ============================================================ -->
+  <footer>
+    <span class="footer-logo">InnTune Consulting</span>
+    <a href="/cdn-cgi/l/email-protection#6714061506270e09091312090249090213"><span class="__cf_email__" data-cfemail="6615071407260f08081213080348080312">[email&#160;protected]</span></a>
+    <span>&copy; 2026 InnTune Consulting</span>
+  </footer>
+
+
+  <!-- ============================================================
+    JAVASCRIPT — don't edit this
+    Fades in elements with class="fade-in" as you scroll to them.
+  ============================================================ -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
