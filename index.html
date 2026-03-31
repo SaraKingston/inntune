@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  INNTUNE CONSULTING — HOME PAGE (index.html)
+  ============================================================
+
+  HOW THIS FILE IS ORGANIZED:
+  1. HEAD — fonts, colors, and all the styling (you won't edit much here)
+  2. NAV — the top navigation bar
+  3. HERO — the big headline section at the top of the page
+  4. WHAT I DO — the four-item services section
+  5. TESTIMONIALS — client quotes
+  6. BOOK A CALL — the bottom call-to-action section
+  7. FOOTER — the very bottom strip
+
+  HOW TO EDIT TEXT:
+  - Find the section you want to change using the labels above
+  - Only change text that sits BETWEEN tags, like this:
+      <p>Change this text here</p>
+      NOT the tags themselves (<p> and </p>)
+  - Save the file when you're done
+
+  YOUR CALENDLY LINK:
+  - Search this file for: YOUR-LINK-HERE
+  - Replace all 3 instances with your actual Calendly URL
+  - Example: https://calendly.com/sara-kingston/discovery
+
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+    PAGE TITLE
+    This shows in the browser tab and in Google search results.
+    Format: Page Name | Site Name
+  ============================================================ -->
+  <title>InnTune Consulting | Sara Kingston</title>
+
+  <!-- ============================================================
+    FONTS
+    These load two fonts from Google:
+    - Cormorant Garamond: used for headings (elegant serif)
+    - DM Sans: used for body text (clean, readable)
+    Don't change these unless you want different fonts.
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+      COLOR PALETTE
+      These are your brand colors. If you ever want to change a
+      color across the whole site, change it here and it updates
+      everywhere automatically.
+
+      --white:       pure white (main background)
+      --off-white:   very light blue-tinted white (alternating sections)
+      --blue-light:  pale blue (used for the CTA section background)
+      --blue:        your main brand blue (buttons, accents)
+      --blue-dark:   darker blue (hover states, labels)
+      --black:       near-black (headings, dark sections)
+      --dark:        slightly softer black (footer, nav on scroll)
+      --muted:       medium gray (body text, secondary info)
+      --border:      very light blue (divider lines)
+    ============================================================ */
+    :root {
+      --white:      #FFFFFF;
+      --off-white:  #F4FAFC;
+      --blue-light: #C5EAF2;
+      --blue:       #5BBFD6;
+      --blue-dark:  #2F9DB8;
+      --black:      #111111;
+      --dark:       #1E1E1E;
+      --muted:      #555555;
+      --border:     #DFF0F5;
+    }
+
+    /* Basic resets — don't touch these */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* Base body styles */
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* Heading styles — Cormorant Garamond for h1, h2, h3 */
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    /* clamp() means: scale the font size with the screen,
+       with a minimum and maximum size */
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+    h3 { font-size: 1.4rem; font-weight: 400; }
+    p  { max-width: 62ch; } /* ch = "characters" — limits line length for readability */
+    a  { color: inherit; }  /* links inherit text color from parent */
+
+    /* ============================================================
+      NAV STYLES
+      The fixed top navigation bar.
+      "scrolled" class is added by JavaScript when you scroll down
+      — it adds a subtle shadow to show the nav is floating.
+    ============================================================ */
+    nav {
+      position: fixed;       /* stays at the top as you scroll */
+      top: 0; left: 0; right: 0;
+      z-index: 100;          /* sits on top of everything else */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 5vw;   /* 5vw = 5% of the viewport width — responsive padding */
+      background: var(--white);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+
+    /* The "InnTune Consulting" logo text in the top-left */
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--black);
+    }
+    /* The "Tune" part of InnTune — colored blue */
+    .nav-logo span { color: var(--blue-dark); }
+
+    /* Logo IMAGE styles — used when you swap the text for an image file.
+       Adjust height to make the logo bigger or smaller in the nav. */
+    .nav-logo-img {
+      height: 40px;   /* change this number to resize your logo */
+      width: auto;    /* keeps the proportions correct automatically */
+      display: block;
+    }
+
+    /* The nav links list (About, What I do) */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    /* The "Book a call" button in the nav */
+    .nav-cta {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      background: var(--blue);
+      color: var(--white) !important;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ============================================================
+      HERO STYLES
+      The full-screen opening section with your main headline.
+
+      The background is a very soft blue radial glow in the top-right
+      corner — like a gentle wash of light. Subtle enough to feel
+      clean, but warmer than a completely flat white page.
+
+      TO GO PLAIN WHITE: replace the background line with:
+          background: var(--white);
+      TO MAKE THE GLOW STRONGER: increase 0.55 toward 0.8 or 0.9.
+      TO MAKE IT SOFTER: decrease it toward 0.2 or 0.3.
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 5vw 6rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 70% 80% at 85% 10%, rgba(197, 234, 242, 0.55) 0%, var(--white) 65%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    /* Small all-caps label above the main headline */
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s; /* fades in on page load */
+    }
+    .hero h1 {
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+    /* The italic "you alone." part of the headline — colored blue */
+    .hero h1 em { font-style: italic; color: var(--blue-dark); }
+
+    /* The paragraph below the main headline */
+    .hero-body {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 50ch;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    /* The row of buttons below the paragraph */
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap; /* wraps to next line on small screens */
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    /* ============================================================
+      BUTTON STYLES
+      .btn-primary — solid blue button (main CTA)
+      .btn-ghost   — text-only link with underline
+      .btn-dark    — solid black button (used in the book section)
+    ============================================================ */
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(47,157,184,0.25);
+    }
+    .btn-ghost {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue-light);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--blue-dark); border-color: var(--blue-dark); }
+
+    /* ============================================================
+      SHARED SECTION STYLES
+      Applied to all full-width sections.
+    ============================================================ */
+    section { padding: 7rem 5vw; }
+
+    /* The small uppercase label that appears above each section heading */
+    .section-label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+      WHAT I DO SECTION STYLES
+      Two-column layout: heading/description on left, numbered
+      items on the right.
+    ============================================================ */
+    .what { background: var(--off-white); }
+    .what-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* two equal columns */
+      gap: 5rem;
+      align-items: start;
+      max-width: 1100px;
+    }
+    .what-left h2 { margin-bottom: 1.5rem; }
+    .what-left p  { color: var(--muted); margin-bottom: 1.1rem; }
+
+    /* Each numbered service item */
+    .what-item {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .what-item:first-child { border-top: 1px solid var(--border); }
+    .what-item h3 { margin-bottom: 0.4rem; color: var(--black); }
+    .what-item p  { font-size: 0.95rem; color: var(--muted); max-width: none; }
+
+    /* The "01", "02" etc. numbers above each item title */
+    .what-number {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ============================================================
+      TESTIMONIALS SECTION STYLES
+      Dark background section with two quote cards side by side.
+      Each card has a clickable video thumbnail on top, then the
+      text quote below.
+    ============================================================ */
+    .testimonials { background: var(--black); color: var(--white); }
+    .testimonials .section-label { color: var(--blue); }
+    .testimonials h2 { color: var(--white); margin-bottom: 3rem; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden; /* clips thumbnail to card's rounded corners */
+    }
+
+    /* ============================================================
+      VIDEO THUMBNAIL
+      Clicking the thumbnail opens the YouTube video in a new tab.
+
+      TO SET THE THUMBNAIL IMAGE:
+        YouTube auto-generates thumbnails. Get your video ID from
+        the YouTube URL — it's the part after "v=".
+        Example URL: https://www.youtube.com/watch?v=abc123xyz
+        Video ID: abc123xyz
+        Then set the thumbnail src in the HTML below to:
+          https://img.youtube.com/vi/abc123xyz/maxresdefault.jpg
+
+      TO REMOVE VIDEO and go back to text-only:
+        Delete the <a class="testimonial-video"> block from each card.
+    ============================================================ */
+    .testimonial-video {
+      display: block;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      text-decoration: none;
+      background: #111;
+    }
+    .testimonial-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: opacity 0.25s;
+    }
+    .testimonial-video:hover img { opacity: 1; }
+
+    /* Play button circle over the thumbnail */
+    .testimonial-video::after {
+      content: '▶';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      padding-left: 3px; /* nudge triangle to look centered */
+      background: rgba(255,255,255,0.9);
+      color: var(--black);
+      border-radius: 50%;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonial-video:hover::after {
+      background: var(--white);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Text area below the video thumbnail */
+    .testimonial-card-body { padding: 1.8rem 2rem; }
+
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-stars { color: var(--blue); font-size: 0.85rem; margin-bottom: 0.4rem; }
+    .testimonial-name  { font-size: 0.85rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+
+    /* ============================================================
+      BOOK A CALL SECTION STYLES
+      Light blue background section at the bottom of the page.
+    ============================================================ */
+    .book { background: var(--blue-light); text-align: center; padding: 7rem 5vw; }
+    .book .section-label { color: var(--blue-dark); }
+    .book h2 { max-width: 16ch; margin: 0 auto 1.5rem; color: var(--black); }
+    .book p  { color: var(--muted); margin: 0 auto 2.5rem; font-size: 1.05rem; max-width: 48ch; }
+
+    .btn-dark {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-dark:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    /* ============================================================
+      FOOTER STYLES
+      The thin dark strip at the very bottom.
+    ============================================================ */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.83rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white); }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    /* ============================================================
+      ANIMATIONS
+      fadeUp: elements slide up and fade in on page load (hero)
+      fade-in: elements animate in as you scroll to them
+              (JavaScript adds "visible" class via IntersectionObserver)
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+      RESPONSIVE STYLES
+      On screens narrower than 768px (phones/tablets):
+      - Two-column layouts collapse to single column
+      - Nav links are hidden (just logo and book button show)
+    ============================================================ */
+    @media (max-width: 768px) {
+      /* On small screens, collapse two-column layouts to single column */
+      .what-inner,
+      .testimonial-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      /* Hide nav links on mobile (just logo and book button show) */
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+    NAV BAR
+    ============================================================
+    The "InnTune Consulting" logo text links back to this page.
+    The nav links take visitors to the About page or the
+    "What I do" section further down this page.
+
+    TO CHANGE YOUR CALENDLY LINK:
+    Replace YOUR-LINK-HERE with your actual Calendly URL.
+    There are 3 instances in this file — replace all of them.
+    Example: https://calendly.com/sara-kingston/discovery-call
+  ============================================================ -->
+  <nav id="nav">
+    <!--
+      NAV LOGO
+      Right now this shows your business name as styled text.
+
+      TO ADD YOUR LOGO IMAGE:
+        1. Save your logo file (e.g., logo.png) in the same folder as this file.
+           A PNG with a transparent background works best.
+        2. Delete the <a href="index.html" class="nav-logo"> line below
+           and replace the whole block with:
+
+              <a href="index.html">
+                <img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" />
+              </a>
+
+        3. The logo will appear at a reasonable size automatically.
+           If it's too big or small, adjust the height in the CSS
+           by finding .nav-logo-img and changing the height value.
+    -->
+    <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="#what-i-do">What I do</a></li>
+      <li><a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="nav-cta">Book a call</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+    HERO SECTION
+    ============================================================
+    This is the first thing visitors see — the full-screen
+    opening section.
+
+    WHAT YOU CAN EDIT HERE:
+    - The small eyebrow text ("Operations consulting for small businesses")
+    - The main headline (h1) — the <em> tags make "you alone." italic and blue
+    - The paragraph below the headline (hero-body)
+    - The button text ("Book a free discovery call")
+    - The link text ("About Sara →")
+  ============================================================ -->
+  <section class="hero">
+    <div class="hero-content">
+
+      <!-- Small label above the headline — keep this short -->
+      <p class="hero-eyebrow">Operations consulting for small businesses</p>
+
+      <!-- Main headline. <br> forces a line break. <em> = italic blue text. -->
+      <h1>Your business<br>shouldn't run on<br><em>you alone.</em></h1>
+
+      <!-- The paragraph below the headline -->
+      <p class="hero-body">
+        I work with small business owners who are ready to stop being the bottleneck in their own business. Together we map your operations, close the gaps, and build systems that run without you holding everything together.
+      </p>
+
+      <!-- The two buttons. Replace YOUR-LINK-HERE with your Calendly URL. -->
+      <div class="hero-actions">
+        <a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="btn-primary">Book a free discovery call</a>
+        <a href="about.html" class="btn-ghost">About Sara &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    WHAT I DO SECTION
+    ============================================================
+    Two columns: description on the left, four service items
+    on the right. The id="what-i-do" is what the nav link
+    "#what-i-do" jumps to when clicked.
+
+    WHAT YOU CAN EDIT HERE:
+    - The section heading ("From chaos to clarity.")
+    - The two paragraphs on the left
+    - Each service item: number, title (h3), and description (p)
+
+    TO ADD A 5TH ITEM: copy one whole <div class="what-item">
+    block and paste it after the last one, then change the text.
+
+    TO REMOVE AN ITEM: delete the whole <div class="what-item">
+    block, from the opening <div> to its closing </div>.
+  ============================================================ -->
+  <section class="what" id="what-i-do">
+    <div class="what-inner fade-in">
+
+      <!-- LEFT COLUMN: heading and description -->
+      <div class="what-left">
+        <span class="section-label">What I do</span>
+        <h2>From chaos<br>to clarity.</h2>
+        <p>Most small business owners hit a wall where hard work and good intentions aren't enough anymore. The business needs real systems to grow, and building those systems is exactly what I do.</p>
+        <p>I work primarily with owners of lean, 1–5 person teams who are ready to get organized, delegate with confidence, and stop being the only person who knows how things work.</p>
+      </div>
+
+      <!-- RIGHT COLUMN: numbered service items -->
+      <div class="what-right">
+
+        <!-- SERVICE ITEM 1 -->
+        <div class="what-item">
+          <span class="what-number">01</span>              <!-- Number — change if reordering -->
+          <h3>Operations mapping</h3>                      <!-- Service title -->
+          <p>We look at how your business actually runs today (not how you think it does) and identify every place where things break down or depend on you personally.</p>
+        </div>
+
+        <!-- SERVICE ITEM 2 -->
+        <div class="what-item">
+          <span class="what-number">02</span>
+          <h3>Role clarity &amp; team structure</h3>       <!-- &amp; = & character in HTML -->
+          <p>Who owns what? When tasks live with roles rather than people, delegation stops being scary and starts working.</p>
+        </div>
+
+        <!-- SERVICE ITEM 3 -->
+        <div class="what-item">
+          <span class="what-number">03</span>
+          <h3>Systems &amp; automation</h3>
+          <p>From workflow documentation to software integrations, I build the infrastructure that lets your team run without you having to orchestrate every piece.</p>
+        </div>
+
+        <!-- SERVICE ITEM 4 -->
+        <div class="what-item">
+          <span class="what-number">04</span>
+          <h3>Ongoing support</h3>
+          <p>Some engagements are a sprint; others are a longer partnership. Either way, I'm in the weeds with you, not handing you a deck and walking away.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    TESTIMONIALS SECTION
+    ============================================================
+    Dark background with two cards. Each card has a clickable
+    video thumbnail on top and the text quote below.
+
+    WHAT YOU NEED TO DO:
+    1. Find your YouTube video IDs (the part after "v=" in the URL)
+       Example URL: https://www.youtube.com/watch?v=abc123xyz
+       Video ID:  abc123xyz
+
+    2. In each card below, replace YOUR-VIDEO-ID in TWO places:
+       - The href on the <a> tag (the YouTube link)
+       - The src on the <img> tag (the thumbnail image URL)
+
+    3. Update the alt text on each <img> to describe the video.
+
+    WHAT YOU CAN ALSO EDIT:
+    - Each quote (inside the <p class="testimonial-quote"> tags)
+    - Each client name and company
+    - Star ratings (add or remove ★ characters)
+
+    TO REMOVE VIDEOS and go back to text-only cards:
+    Delete the <a class="testimonial-video"> block from each card.
+    Then add padding: 2.5rem; back to .testimonial-card in the CSS.
+  ============================================================ -->
+  <section class="testimonials">
+    <span class="section-label fade-in">What clients say</span>
+    <h2 class="fade-in">Real results for<br>real businesses.</h2>
+
+    <div class="testimonial-grid fade-in">
+
+      <!-- TESTIMONIAL 1 -->
+      <div class="testimonial-card">
+
+        <!--
+          VIDEO THUMBNAIL — replace YOUR-VIDEO-ID with your actual YouTube video ID
+          The href is the YouTube watch link.
+          The img src is the auto-generated YouTube thumbnail.
+        -->
+        <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID"
+           target="_blank"
+           class="testimonial-video"
+           aria-label="Watch Russell's video testimonial">
+          <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID/maxresdefault.jpg"
+               alt="Russell from Tap Stays shares his experience working with Sara" />
+        </a>
+
+        <!-- Text quote below the video -->
+        <div class="testimonial-card-body">
+          <p class="testimonial-quote">"The systems Sara has set up to make my business run smoother have been invaluable."</p>
+          <div class="testimonial-stars">★★★★★</div>
+          <span class="testimonial-name">Russell, Tap Stays</span>
+        </div>
+
+      </div>
+
+      <!-- TESTIMONIAL 2 -->
+      <div class="testimonial-card">
+
+        <!--
+          VIDEO THUMBNAIL — replace YOUR-VIDEO-ID with your actual YouTube video ID
+        -->
+        <a href="https://www.youtube.com/watch?v=YOUR-VIDEO-ID-2"
+           target="_blank"
+           class="testimonial-video"
+           aria-label="Watch Dwight's video testimonial">
+          <img src="https://img.youtube.com/vi/YOUR-VIDEO-ID-2/maxresdefault.jpg"
+               alt="Dwight from Northpoint Hospitality shares his experience working with Sara" />
+        </a>
+
+        <div class="testimonial-card-body">
+          <p class="testimonial-quote">"Sara came in and provided clarity for me."</p>
+          <div class="testimonial-stars">★★★★★</div>
+          <span class="testimonial-name">Dwight, Northpoint Hospitality</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    BOOK A CALL SECTION
+    ============================================================
+    The closing call-to-action at the bottom of the page.
+    Light blue background, centered text, one big button.
+
+    WHAT YOU CAN EDIT HERE:
+    - The section heading ("Let's figure out what's in the way.")
+    - The paragraph below it
+    - The button text
+    Replace YOUR-LINK-HERE with your Calendly URL.
+  ============================================================ -->
+  <section class="book">
+    <span class="section-label fade-in">Ready to get started?</span>
+    <h2 class="fade-in">Let's figure out what's in the way.</h2>
+    <p class="fade-in">A discovery call is free and a good way to find out whether we'd work well together. It's just a conversation.</p>
+    <a href="https://calendly.com/YOUR-LINK-HERE" target="_blank" class="btn-dark fade-in">Book a free discovery call</a>
+  </section>
+
+
+  <!-- ============================================================
+    FOOTER
+    ============================================================
+    The thin strip at the very bottom.
+
+    WHAT YOU CAN EDIT HERE:
+    - "InnTune Consulting" — your business name
+    - "sara@inntune.net" — your email (appears in two places:
+        the href="mailto:..." and the visible text)
+    - The copyright year
+  ============================================================ -->
+  <footer>
+    <span class="footer-logo">InnTune Consulting</span>
+    <a href="/cdn-cgi/l/email-protection#cfbcaebdae8fa6a1a1bbbaa1aae1a1aabb"><span class="__cf_email__" data-cfemail="c9baa8bba889a0a7a7bdbca7ace7a7acbd">[email&#160;protected]</span></a>
+    <span>&copy; 2026 InnTune Consulting</span>   <!-- &copy; = the © symbol -->
+  </footer>
+
+
+  <!-- ============================================================
+    JAVASCRIPT
+    ============================================================
+    Two small scripts that power the animations. Don't edit these.
+
+    1. Nav shadow: adds a subtle shadow to the nav when you scroll
+    2. Scroll animations: elements with class="fade-in" animate
+       into view as you scroll past them
+  ============================================================ -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Add shadow to nav when page is scrolled
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+    // Fade-in elements as they enter the viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
