@@ -12,20 +12,18 @@
   7. FOOTER
 
   IMAGE FILES — all must be in the same folder as this HTML file:
-    IMG_0560.jpeg — profile photo (story section)
-    IMG_7309.JPG  — feet in hammock (cabin card)
+    IMG_0560.jpeg  — profile photo (story section)
+    IMG_7309.JPG   — feet in hammock (cabin card)
     FullSizeRender.jpg — hiking photo
-    IMG_7404.JPG  — paddleboard on lake
-    IMG_0239.jpeg — cross-country skiing
-    IMG_7567.JPG  — Air Force group photo
-    IMG_1885.jpeg — drill in front of cabin
-    IMG_7271.JPG  — family photo
-    IMG_7401.JPG  — reading by the lake
+    IMG_0239.jpeg  — cross-country skiing
+    IMG_7567.JPG   — Air Force group photo
+    IMG_1885.jpeg  — drill in front of cabin
+    IMG_7271.JPG   — family photo
+    IMG_7401.JPG   — reading by the lake
+    IMG_7404.JPG   — paddleboard on lake
 
-  TO SWAP A PHOTO: find the card in the PHOTO CARDS section,
-  update the src="filename" on the <img> tag to match your file.
-
-  YOUR BOOKING LINK: already set throughout this file.
+  TO SWAP A PHOTO: find the card, update src="filename" on the <img> tag.
+  TO ADD THE ROAMING GNOME PHOTO: find Card 9 below and swap the emoji placeholder.
 -->
 <html lang="en">
 <head>
@@ -99,9 +97,8 @@
       color: var(--black);
     }
     .nav-logo span { color: var(--blue-dark); }
-    /* TO USE A LOGO IMAGE instead of text, swap the <a class="nav-logo"> in the HTML with:
-       <a href="index.html"><img src="logo.png" alt="InnTune Consulting" class="nav-logo-img" /></a> */
-    .nav-logo-img { height: 40px; width: auto; display: block; }
+    /* TO USE A LOGO IMAGE: replace the <a class="nav-logo"> in the HTML with:
+       <a href="index.html"><img src="logo.png" alt="InnTune Consulting" style="height:40px;width:auto;" /></a> */
     .nav-links {
       display: flex;
       align-items: center;
@@ -164,7 +161,7 @@
       position: sticky;
       top: 6rem;
     }
-    /* Profile photo — crops to portrait (3:4 ratio) */
+    /* Profile photo — crops to portrait 3:4 ratio */
     .story-photo-img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -204,13 +201,23 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 28px rgba(0,0,0,0.1);
     }
-    /* Photo card image — crops to landscape (4:3 ratio)
-       TO SWAP A PHOTO: update the src="filename" on the <img> tag in the HTML */
+    /* Card image — crops to landscape 4:3 ratio
+       TO SWAP A PHOTO: update src="filename" on the <img> tag */
     .photo-card-img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
+    }
+    /* Placeholder style — only used for the emoji placeholders, not real photos */
+    .photo-card-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
     }
     .photo-card-body { padding: 1.1rem 1.2rem 1.2rem; }
     .photo-card-body h3 { margin-bottom: 0.3rem; color: var(--black); }
@@ -260,14 +267,6 @@
     footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--white); }
 
-    /* ANIMATIONS */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .story { grid-template-columns: 1fr; gap: 3rem; }
@@ -304,16 +303,15 @@
   </div>
 
 
-  <!-- STORY — two-column section with profile photo and bio text -->
-  <div class="story fade-in">
+  <!-- STORY — two columns: profile photo left, bio text right -->
+  <div class="story">
 
-    <!-- Left column: profile photo
-         TO SWAP: update src="IMG_0560.jpeg" to match your filename -->
+    <!-- Left: profile photo. TO SWAP: update src="IMG_0560.jpeg" to match your filename -->
     <div class="story-photo">
       <img src="IMG_0560.jpeg" alt="Sara Kingston" class="story-photo-img" />
     </div>
 
-    <!-- Right column: bio text — edit the paragraphs here -->
+    <!-- Right: bio text — edit paragraphs here -->
     <div class="story-text">
       <h2>I came to this work from the inside.</h2>
 
@@ -333,7 +331,7 @@
         I work best with <strong>business owners running lean 1–5 person teams</strong> who are ready to grow but know their current setup won't support it. If that's you, I'd love to talk.
       </p>
 
-      <!-- InnTune name origin -->
+      <!-- InnTune name origin — edit this if you want to change how you tell the story -->
       <p>
         One more thing: the name. I grew up playing five instruments and still sit down at the piano regularly. Music is part of how I think, and so is the science behind it: frequency, wavelengths, what it takes to get different signals working in harmony rather than against each other. Multiple instruments, each doing their own thing, all contributing to something that sounds right together. That's what good operations look like, in any industry. InnTune started in hospitality, where "Inn" made literal sense, but the idea underneath it was always broader. The name stuck.
       </p>
@@ -343,14 +341,14 @@
 
 
   <!-- PHOTO CARDS
-       Each card has an <img> with a src="filename" — update that filename to swap photos.
+       TO SWAP A PHOTO: find the card, update src="filename" on the <img> tag.
        TO ADD A CARD: copy a whole <div class="photo-card"> block and paste after the last one.
        TO REMOVE A CARD: delete a whole <div class="photo-card"> block. -->
   <section class="photo-cards-section">
-    <h2 class="fade-in">A little more about me.</h2>
-    <p class="intro fade-in">Outside of client work, here's what you'd actually find me doing.</p>
+    <h2>A little more about me.</h2>
+    <p class="intro">Outside of client work, here's what you'd actually find me doing.</p>
 
-    <div class="photo-grid fade-in">
+    <div class="photo-grid">
 
       <!-- Card 1: Cabin — IMG_7309.JPG (feet in hammock) -->
       <div class="photo-card">
@@ -384,7 +382,7 @@
         <img src="IMG_7567.JPG" alt="Sara with fellow Air Force dentists" class="photo-card-img" />
         <div class="photo-card-body">
           <h3>I was a dentist in the Air Force</h3>
-          <p>I'm also less than 5' tall. 😊</p>
+          <p>I'm also less than 5' tall. &#128522;</p>
         </div>
       </div>
 
@@ -425,10 +423,10 @@
       </div>
 
       <!-- Card 9: Roaming Gnome — add your photo when you have it
-           TO ADD PHOTO: replace the placeholder div with:
-           <img src="your-photo.jpg" alt="Roaming Gnome plant yard sale" class="photo-card-img" /> -->
+           TO ADD PHOTO: delete the <div class="photo-card-placeholder"> line
+           and replace it with: <img src="roaming-gnome.jpg" alt="Roaming Gnome plant sale" class="photo-card-img" /> -->
       <div class="photo-card">
-        <div class="photo-card-img" style="background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:2.5rem;">🌱</div>
+        <div class="photo-card-placeholder">&#127807;</div>
         <div class="photo-card-body">
           <h3>Roaming Gnome</h3>
           <p>I run a plant yard sale every year. It's a whole thing.</p>
@@ -441,22 +439,21 @@
 
   <!-- BOOK A CALL -->
   <section class="cta-strip">
-    <span class="section-label fade-in">Sound like a fit?</span>
-    <h2 class="fade-in">Let's talk about your business.</h2>
-    <p class="fade-in">If any of this sounds like where you are, I'd genuinely love to hear about your business. Book a free discovery call and let's figure out where to start.</p>
-    <a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="btn-dark fade-in">Book a free discovery call</a>
+    <span class="section-label">Sound like a fit?</span>
+    <h2>Let's talk about your business.</h2>
+    <p>If any of this sounds like where you are, I'd genuinely love to hear about your business. Book a free discovery call and let's figure out where to start.</p>
+    <a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="btn-dark">Book a free discovery call</a>
   </section>
 
 
-  <!-- FOOTER — update your email in both the href="mailto:..." and the visible text -->
+  <!-- FOOTER
+       The email is written using HTML character codes to prevent it from being
+       auto-obfuscated. Do not change the format of the email link. -->
   <footer>
     <span class="footer-logo">InnTune Consulting</span>
-    <a href="/cdn-cgi/l/email-protection#3a495b485b7a5354544e4f545f14545f4e"><span class="__cf_email__" data-cfemail="a9dac8dbc8e9c0c7c7dddcc7cc87c7ccdd">[email&#160;protected]</span></a>
+    <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#97;&#114;&#97;&#64;&#105;&#110;&#110;&#116;&#117;&#110;&#101;&#46;&#110;&#101;&#116;">&#115;&#97;&#114;&#97;&#64;&#105;&#110;&#110;&#116;&#117;&#110;&#101;&#46;&#110;&#101;&#116;</a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
 
-
-  <!-- JAVASCRIPT — don't edit this -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
+</body>
+</html>
