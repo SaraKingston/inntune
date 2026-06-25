@@ -21,15 +21,20 @@
     IMG_7271.JPG   — family photo
     IMG_7401.JPG   — reading by the lake
     IMG_7404.JPG   — paddleboard on lake
+    75A73940-B94B-4FC3-A94F-5B3476BFDECF_1_105_c.jpeg — Roaming Gnome plant sale
 
   TO SWAP A PHOTO: find the card, update src="filename" on the <img> tag.
-  TO ADD THE ROAMING GNOME PHOTO: find Card 9 below and swap the emoji placeholder.
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Sara | InnTune Consulting</title>
+  <meta name="description" content="Meet Sara Kingston, founder of InnTune Consulting. Air Force veteran, operations consultant, and systems builder for small businesses with 1-5 person teams." />
+  <meta property="og:title" content="About Sara | InnTune Consulting" />
+  <meta property="og:description" content="Meet Sara Kingston, founder of InnTune Consulting. Air Force veteran turned operations consultant." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://inntune.net/about" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -85,8 +90,12 @@
       justify-content: space-between;
       padding: 1.2rem 5vw;
       background: var(--white);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
     }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
@@ -98,7 +107,7 @@
     }
     .nav-logo span { color: var(--blue-dark); }
     /* TO USE A LOGO IMAGE: replace the <a class="nav-logo"> in the HTML with:
-       <a href="index.html"><img src="logo.png" alt="InnTune Consulting" style="height:40px;width:auto;" /></a> */
+       <a href="/"><img src="logo.png" alt="InnTune Consulting" style="height:40px;width:auto;" /></a> */
     .nav-links {
       display: flex;
       align-items: center;
@@ -278,16 +287,28 @@
       .photo-grid { grid-template-columns: 1fr; }
     }
 
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo">Inn<span>Tune</span> Consulting</a>
+  <nav id="nav">
+    <a href="/" class="nav-logo">Inn<span>Tune</span> Consulting</a>
     <ul class="nav-links">
-      <li><a href="index.html#what-i-do">What I do</a></li>
-      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="/#what-i-do">What I do</a></li>
+      <li><a href="/#testimonials">Testimonials</a></li>
       <li><a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="nav-cta">Book a call</a></li>
     </ul>
   </nav>
@@ -304,7 +325,7 @@
 
 
   <!-- STORY — two columns: profile photo left, bio text right -->
-  <div class="story">
+  <div class="story fade-in">
 
     <!-- Left: profile photo. TO SWAP: update src="IMG_0560.jpeg" to match your filename -->
     <div class="story-photo">
@@ -345,50 +366,50 @@
        TO ADD A CARD: copy a whole <div class="photo-card"> block and paste after the last one.
        TO REMOVE A CARD: delete a whole <div class="photo-card"> block. -->
   <section class="photo-cards-section">
-    <h2>A little more about me.</h2>
-    <p class="intro">Outside of client work, here's what you'd actually find me doing.</p>
+    <h2 class="fade-in">A little more about me.</h2>
+    <p class="intro fade-in">Outside of client work, here's what you'd actually find me doing.</p>
 
-    <div class="photo-grid">
+    <div class="photo-grid fade-in">
 
       <!-- Card 1: Cabin — IMG_7309.JPG (feet in hammock) -->
       <div class="photo-card">
-        <img src="IMG_7309.JPG" alt="Relaxing in a hammock outside Sara's cabin" class="photo-card-img" />
+        <img src="IMG_7309.JPG" alt="Relaxing in a hammock outside Sara's cabin" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>Cabin in the woods</h3>
-          <p>I live in a cabin in the woods.</p>
+          <h3>Home base</h3>
+          <p>A cabin in the woods. Best commute I've ever had.</p>
         </div>
       </div>
 
       <!-- Card 2: Hiking — FullSizeRender.jpg -->
       <div class="photo-card">
-        <img src="FullSizeRender.jpg" alt="Sara out on a hike" class="photo-card-img" />
+        <img src="FullSizeRender.jpg" alt="Sara out on a hike" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>I love hiking</h3>
-          <p>I'll take any excuse to get outside.</p>
+          <h3>Happiest on a trail</h3>
+          <p>Any season, any distance. I don't need much convincing.</p>
         </div>
       </div>
 
       <!-- Card 3: Skiing — IMG_0239.jpeg -->
       <div class="photo-card">
-        <img src="IMG_0239.jpeg" alt="Sara cross-country skiing" class="photo-card-img" />
+        <img src="IMG_0239.jpeg" alt="Sara cross-country skiing" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>I also cross-country ski</h3>
-          <p>And camping. And paddleboarding. Basically anything outside.</p>
+          <h3>Year-round outdoors</h3>
+          <p>Cross-country skiing, camping, paddleboarding&mdash;if it's outside, I'm in.</p>
         </div>
       </div>
 
       <!-- Card 4: Air Force — IMG_7567.JPG -->
       <div class="photo-card">
-        <img src="IMG_7567.JPG" alt="Sara with fellow Air Force dentists" class="photo-card-img" />
+        <img src="IMG_7567.JPG" alt="Sara with fellow Air Force dentists" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>I was a dentist in the Air Force</h3>
-          <p>I'm also less than 5' tall. &#128522;</p>
+          <h3>Air Force dentist, under 5 feet tall</h3>
+          <p>Yes, that's me in the middle. And yes, I had to look up.</p>
         </div>
       </div>
 
       <!-- Card 5: Drill/cabin — IMG_1885.jpeg -->
       <div class="photo-card">
-        <img src="IMG_1885.jpeg" alt="Sara with a drill in front of the cabin" class="photo-card-img" />
+        <img src="IMG_1885.jpeg" alt="Sara with a drill in front of the cabin" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
           <h3>I can sling a hammer</h3>
           <p>And a drill.</p>
@@ -397,39 +418,37 @@
 
       <!-- Card 6: Family — IMG_7271.JPG -->
       <div class="photo-card">
-        <img src="IMG_7271.JPG" alt="Sara with her family" class="photo-card-img" />
+        <img src="IMG_7271.JPG" alt="Sara with her family" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>My family</h3>
-          <p>I have 2 sisters and triplet nieces.</p>
+          <h3>The Kingston crew</h3>
+          <p>Two sisters and triplet nieces. Never a dull holiday.</p>
         </div>
       </div>
 
       <!-- Card 7: Reading — IMG_7401.JPG -->
       <div class="photo-card">
-        <img src="IMG_7401.JPG" alt="Sara reading by the lake" class="photo-card-img" />
+        <img src="IMG_7401.JPG" alt="Sara reading by the lake" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>I love reading</h3>
-          <p>Almost always fiction.</p>
+          <h3>Always reading something</h3>
+          <p>Almost always fiction. Recommendations welcome.</p>
         </div>
       </div>
 
       <!-- Card 8: Paddleboard — IMG_7404.JPG -->
       <div class="photo-card">
-        <img src="IMG_7404.JPG" alt="Sara on a paddleboard on the lake" class="photo-card-img" />
+        <img src="IMG_7404.JPG" alt="Sara on a paddleboard on the lake" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>On the water</h3>
-          <p>Lake life. Any chance I get.</p>
+          <h3>Lake life</h3>
+          <p>On the water any chance I get. Paddleboard preferred.</p>
         </div>
       </div>
 
-      <!-- Card 9: Roaming Gnome — add your photo when you have it
-           TO ADD PHOTO: delete the <div class="photo-card-placeholder"> line
-           and replace it with: <img src="roaming-gnome.jpg" alt="Roaming Gnome plant sale" class="photo-card-img" /> -->
+      <!-- Card 9: Roaming Gnome -->
       <div class="photo-card">
-        <div class="photo-card-placeholder">&#127807;</div>
+        <img src="75A73940-B94B-4FC3-A94F-5B3476BFDECF_1_105_c.jpeg" alt="The Roaming Gnome plant yard sale" class="photo-card-img" loading="lazy" />
         <div class="photo-card-body">
-          <h3>Roaming Gnome</h3>
-          <p>I run a plant yard sale every year. It's a whole thing.</p>
+          <h3>The Roaming Gnome</h3>
+          <p>Just an excuse to play in dirt all winter.</p>
         </div>
       </div>
 
@@ -439,10 +458,10 @@
 
   <!-- BOOK A CALL -->
   <section class="cta-strip">
-    <span class="section-label">Sound like a fit?</span>
-    <h2>Let's talk about your business.</h2>
-    <p>If any of this sounds like where you are, I'd genuinely love to hear about your business. Book a free discovery call and let's figure out where to start.</p>
-    <a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="btn-dark">Book a free discovery call</a>
+    <span class="section-label fade-in">Sound like a fit?</span>
+    <h2 class="fade-in">Let's talk about your business.</h2>
+    <p class="fade-in">If any of this sounds like where you are, I'd genuinely love to hear about your business. Book a free discovery call and let's figure out where to start.</p>
+    <a href="https://calendar.app.google/HzQwBJVCEmkx34hN8" target="_blank" class="btn-dark fade-in">Book a free discovery call</a>
   </section>
 
 
@@ -454,6 +473,17 @@
     <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#97;&#114;&#97;&#64;&#105;&#110;&#110;&#116;&#117;&#110;&#101;&#46;&#110;&#101;&#116;">&#115;&#97;&#114;&#97;&#64;&#105;&#110;&#110;&#116;&#117;&#110;&#101;&#46;&#110;&#101;&#116;</a>
     <span>&copy; 2026 InnTune Consulting</span>
   </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
